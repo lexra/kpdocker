@@ -7,8 +7,10 @@
 
 #docker rmi -f $(docker images -aq) || true
 
+DOCKER_MOUNT=/mnt/docker
+mkdir -p ${DOCKER_MOUNT}
 docker build -t="kneron/toolchain:vim" .
-docker run --rm -it -v /mnt/docker:/docker_mount kneron/toolchain:vim
+docker run --rm -it -v ${DOCKER_MOUNT}:/docker_mount kneron/toolchain:vim
 
 #pip3 install numpy==1.19.5
 exit 0
