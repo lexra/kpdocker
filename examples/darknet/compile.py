@@ -22,7 +22,6 @@ def darknetKeyValue(cfg, key):
             line = lineN.rstrip()
             m = re.match(pattern, line)
             if m:
-                #print(m.group(1))
                 return m.group(1)
     return None
 
@@ -31,6 +30,7 @@ CWD = '/workspace/examples/darknet/'
 NAME = 'yolov3-tiny'
 In_Model_Preprocess = True
 TEST_LIST = 'test_image10.txt'
+IMPUT_NAMES = 'input_1_o0'
 
 DEVICE = '520'
 if len(sys.argv) > 1:
@@ -105,7 +105,7 @@ print("\nNpu performance evaluation result:\n" + str(eval_result))
 input_image = Image.open(CWD + '000000350003.jpg')
 in_data = preprocess(input_image)
 input_image.close()
-out_data = ktc.kneron_inference([in_data], onnx_file=CWD + NAME + '.opt.onnx', input_names=["input_1_o0"])
+out_data = ktc.kneron_inference([in_data], onnx_file=CWD + NAME + '.opt.onnx', input_names=[IMPUT_NAMES])
 if out_data is not None:
     print('Section 3 E2E simulator finished.')
 else:
@@ -127,7 +127,7 @@ for item in lines:
     image.close()
 
 # fix point analysis
-bie_model_path = km.analysis({"input_1_o0": img_list}, output_dir='/data1/kneron_flow', threads=4, quantize_mode='default', datapath_range_method='percentage', fm_cut='deep_search', mode=1)
+bie_model_path = km.analysis({IMPUT_NAMES: img_list}, output_dir='/data1/kneron_flow', threads=4, quantize_mode='default', datapath_range_method='percentage', fm_cut='deep_search', mode=1)
 print("\nFix point analysis done. Save bie model to '" + str(bie_model_path) + "'")
 
 # bie model check
@@ -135,7 +135,7 @@ input_image = Image.open(CWD + '000000350003.jpg')
 in_data = preprocess(input_image)
 input_image.close()
 #radix = ktc.get_radix(img_list)
-out_data = ktc.kneron_inference([in_data], bie_file=bie_model_path, input_names=["input_1_o0"], platform=int(DEVICE))
+out_data = ktc.kneron_inference([in_data], bie_file=bie_model_path, input_names=[IMPUT_NAMES], platform=int(DEVICE))
 det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
 
@@ -150,7 +150,7 @@ input_image = Image.open(CWD + '000000350003.jpg')
 in_data = preprocess(input_image)
 input_image.close()
 #radix = ktc.get_radix(img_list)
-out_data = ktc.kneron_inference([in_data], nef_file=nef_model_path, platform=int(DEVICE), input_names=["input_1_o0"])
+out_data = ktc.kneron_inference([in_data], nef_file=nef_model_path, platform=int(DEVICE), input_names=[IMPUT_NAMES])
 det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
 

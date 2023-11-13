@@ -22,7 +22,6 @@ RUN cd /data1 && git clone https://github.com/qqwweee/keras-yolo3.git keras_yolo
 RUN mkdir -p examples/darknet
 COPY examples/darknet/compile.py examples/darknet
 COPY examples/darknet/yolov3-tiny.cfg examples/darknet
-#COPY examples/darknet/yolov3-tiny.anchors examples/darknet
 COPY examples/darknet/test_image10.txt examples/darknet
 RUN cd examples/darknet && cat yolov3-tiny.cfg |grep anchors | tail -1 | awk -F '=' '{print $2}' > yolov3-tiny.anchors && cd -
 RUN cd examples/darknet && wget https://pjreddie.com/media/files/yolov3-tiny.weights && cd -
