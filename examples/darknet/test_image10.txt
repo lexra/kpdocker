@@ -1,0 +1,10 @@
+/workspace/examples/darknet/test_image10/000000005001.jpg
+/workspace/examples/darknet/test_image10/000000001000.jpg
+/workspace/examples/darknet/test_image10/000000000785.jpg
+/workspace/examples/darknet/test_image10/000000000139.jpg
+/workspace/examples/darknet/test_image10/000000001296.jpg
+/workspace/examples/darknet/test_image10/000000005193.jpg
+/workspace/examples/darknet/test_image10/309_190.jpg
+/workspace/examples/darknet/test_image10/000000001268.jpg
+/workspace/examples/darknet/test_image10/000000000872.jpg
+/workspace/examples/darknet/test_image10/000000000885.jpg
