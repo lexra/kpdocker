@@ -26,20 +26,20 @@ def darknetKeyValue(cfg, key):
     return None
 
 ###########################################################
-CWD = '/workspace/examples/darknet/'
-NAME = 'yolov3-tiny'
+CWD = '/workspace/examples/wheelchair/'
+NAME = 'wheelchair'
 In_Model_Preprocess = True
-TEST_LIST = 'test_image10.txt'
+TEST_LIST = 'test.txt'
 IMPUT_NAMES = 'input_1_o0'
 
 DEVICE = '520'
 if len(sys.argv) > 1:
     DEVICE = sys.argv[1]
 
-CLASSES = int(darknetKeyValue(CWD + NAME + '.cfg', key='classes'))
-CHANNELS = int(darknetKeyValue(CWD + NAME + '.cfg', key='channels'))
-WIDTH = int(darknetKeyValue(CWD + NAME + '.cfg', key='width'))
-HEIGHT = int(darknetKeyValue(CWD + NAME + '.cfg', key='height'))
+CLASSES = int(darknetKeyValue(cfg = CWD + NAME + '.cfg', key='classes'))
+CHANNELS = int(darknetKeyValue(cfg = CWD + NAME + '.cfg', key='channels'))
+WIDTH = int(darknetKeyValue(cfg = CWD + NAME + '.cfg', key='width'))
+HEIGHT = int(darknetKeyValue(cfg = CWD + NAME + '.cfg', key='height'))
 
 def postprocess(inf_results, ori_image_shape):
     tensor_data = [tf.convert_to_tensor(data, dtype=tf.float32) for data in inf_results]
@@ -102,7 +102,7 @@ eval_result = km.evaluate()
 print("\nNpu performance evaluation result:\n" + str(eval_result))
 
 ## onnx model check
-input_image = Image.open(CWD + '000000350003.jpg')
+input_image = Image.open(CWD + 'push_wheelchair.jpg')
 in_data = preprocess(input_image)
 input_image.close()
 out_data = ktc.kneron_inference([in_data], onnx_file=CWD + NAME + '.opt.onnx', input_names=[IMPUT_NAMES])
@@ -131,10 +131,9 @@ bie_model_path = km.analysis({IMPUT_NAMES: img_list}, output_dir='/data1/kneron_
 print("\nFix point analysis done. Save bie model to '" + str(bie_model_path) + "'")
 
 # bie model check
-input_image = Image.open(CWD + '000000350003.jpg')
+input_image = Image.open(CWD + 'push_wheelchair.jpg')
 in_data = preprocess(input_image)
 input_image.close()
-#radix = ktc.get_radix(img_list)
 out_data = ktc.kneron_inference([in_data], bie_file=bie_model_path, input_names=[IMPUT_NAMES], platform=int(DEVICE))
 det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
@@ -146,10 +145,9 @@ print("\nCompile done. Save Nef file to '" + str(nef_model_path) + "'")
 
 # nef model check
 print('')
-input_image = Image.open(CWD + '000000350003.jpg')
+input_image = Image.open(CWD + 'push_wheelchair.jpg')
 in_data = preprocess(input_image)
 input_image.close()
-#radix = ktc.get_radix(img_list)
 out_data = ktc.kneron_inference([in_data], nef_file=nef_model_path, platform=int(DEVICE), input_names=[IMPUT_NAMES])
 det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
