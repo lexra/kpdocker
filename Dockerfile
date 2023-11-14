@@ -37,7 +37,7 @@ COPY examples/wheelchair/push_wheelchair.jpg examples/wheelchair
 COPY examples/wheelchair/compile.py examples/wheelchair
 COPY examples/wheelchair/test.txt examples/wheelchair
 RUN cd examples/wheelchair && /workspace/miniconda/bin/gdown --id 1uSpN-bDlX9wG66K36yuscewB58pFnpbz && unzip -o datasets.zip && rm -rfv datasets.zip && cd -
-RUN cd examples/wheelchair && /workspace/miniconda/bin/gdown --id gdown --id 1K2fzXOUwuBjdBll3pHaldvqV41Rujsa_ && cd -
+RUN cd examples/wheelchair && /workspace/miniconda/bin/gdown --id 1K2fzXOUwuBjdBll3pHaldvqV41Rujsa_ && cd -
 COPY examples/wheelchair/wheelchair.cfg examples/wheelchair
 RUN cd examples/wheelchair && cat wheelchair.cfg | grep anchors | tail -1 | awk -F '=' '{print $2}' > wheelchair.anchors && cd -
 RUN cd examples/wheelchair && /workspace/miniconda/bin/python /data1/keras_yolo3/convert.py ./wheelchair.cfg ./wheelchair.weights ./wheelchair.h5 && cd -
