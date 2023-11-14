@@ -1,9 +1,15 @@
 
+###########################################################
+# kneron/toolchain
+###########################################################
+
 #FROM kneron/toolchain:latest
 FROM kneron/toolchain:v0.23.0
+
 RUN apt update
 RUN apt install -y vim p7zip-full p7zip-rar iputils-ping net-tools udhcpc cython rar
 RUN /workspace/miniconda/bin/pip install gdown
+RUN /workspace/miniconda/bin/pip install pillow==8.1.2
 
 #RUN apt-get nvidia-common
 #RUN apt install -y nvidia-driver-535
@@ -11,11 +17,10 @@ RUN /workspace/miniconda/bin/pip install gdown
 #RUN wget https://github.com/kneron/Model_Zoo/blob/main/mmpose/rsn18_freihand/latest.zip -O latest.zip
 
 ###########################################################
-# tensorflow_backend.py
+# keras/backend/tensorflow_backend.py
 ###########################################################
 RUN cd /data1 && git clone https://github.com/qqwweee/keras-yolo3.git keras_yolo3 && cd -
 COPY keras/backend/tensorflow_backend.py /workspace/miniconda/lib/python3.7/site-packages/keras/backend
-#RUN /workspace/miniconda/bin/pip3 install pillow==8.1.2
 
 ###########################################################
 # darknet
