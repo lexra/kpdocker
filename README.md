@@ -244,6 +244,72 @@ km = ktc.ModelConfig(32769, "0001", DEVICE, onnx_model=m)
 eval_result = km.evaluate()
 ```
 
+```bash
+===========================================
+=            report on flow status        =
+===========================================
+
+                kdp520                                                                                 general
+               gen_nef     FPS batch compiler compiler frontend compiler hw info compiler_cfg cpu_node Success onnx size (MB)
+category case
+input    input       ✓  21.352              ✓                 ✓                ✓            ✓      N/A       ✓             33
+
+
+
+
+Npu performance evaluation result:
+docker_version: kneron/toolchain:v0.23.0
+comments:
+kdp520/input bitwidth: int8
+kdp520/output bitwidth: int8
+kdp520/datapath bitwidth: int8
+kdp520/weight bitwidth: int8
+kdp520/ip_eval/fps: 21.352
+kdp520/ip_eval/ITC(ms): 46.8341 ms
+kdp520/ip_eval/RDMA bandwidth GB/s: 0.800000
+kdp520/ip_eval/WDMA bandwidth GB/s: 0.800000
+kdp520/ip_eval/GETW bandwidth GB/s: 0.800000
+kdp520/cpu_node: N/A
+gen fx model report: model_fx_report.html
+
+, node, node origin, type, node backend,
+0, concatenate_1, concatenate_1, NPU, concatenate_1,
+1, concatenate_1_KNOPT_dummy_bn_0, concatenate_1, NPU, concatenate_1_KNOPT_dummy_bn_0,
+2, concatenate_1_KNOPT_dummy_bn_1, concatenate_1, NPU, concatenate_1_KNOPT_dummy_bn_1,
+3, conv2d_1, conv2d_1, NPU, npu_fusion_node_conv2d_1_leaky_re_lu_1_max_pooling2d_1,
+4, conv2d_10, conv2d_10, NPU, conv2d_10,
+5, conv2d_11, conv2d_11, NPU, npu_fusion_node_conv2d_8_leaky_re_lu_8_KNERON_REFORMAT_next_0,
+6, conv2d_12, conv2d_12, NPU, npu_fusion_node_conv2d_12_leaky_re_lu_11,
+7, conv2d_13, conv2d_13, NPU, npu_fusion_node_conv2d_12_leaky_re_lu_11_KNERON_REFORMAT_next_0,
+8, conv2d_2, conv2d_2, NPU, npu_fusion_node_conv2d_2_leaky_re_lu_2_max_pooling2d_2,
+9, conv2d_3, conv2d_3, NPU, npu_fusion_node_conv2d_3_leaky_re_lu_3_max_pooling2d_3,
+10, conv2d_4, conv2d_4, NPU, npu_fusion_node_conv2d_4_leaky_re_lu_4_max_pooling2d_4,
+11, conv2d_5, conv2d_5, NPU, npu_fusion_node_conv2d_5_leaky_re_lu_5,
+12, conv2d_6, conv2d_6, NPU, npu_fusion_node_conv2d_6_leaky_re_lu_6,
+13, conv2d_7, conv2d_7, NPU, npu_fusion_node_conv2d_7_leaky_re_lu_7,
+14, conv2d_8, conv2d_8, NPU, npu_fusion_node_conv2d_8_leaky_re_lu_8,
+15, conv2d_9, conv2d_9, NPU, npu_fusion_node_conv2d_9_leaky_re_lu_9,
+16, input_1_o0_scale_shift_bn, input_1_o0_scale_shift_bn, NPU, input_1_o0_scale_shift_bn,
+17, leaky_re_lu_1, leaky_re_lu_1, NPU, npu_fusion_node_conv2d_1_leaky_re_lu_1_max_pooling2d_1,
+18, leaky_re_lu_10, leaky_re_lu_10, NPU, npu_fusion_node_conv2d_8_leaky_re_lu_8_KNERON_REFORMAT_next_0,
+19, leaky_re_lu_11, leaky_re_lu_11, NPU, npu_fusion_node_conv2d_12_leaky_re_lu_11,
+20, leaky_re_lu_2, leaky_re_lu_2, NPU, npu_fusion_node_conv2d_2_leaky_re_lu_2_max_pooling2d_2,
+21, leaky_re_lu_3, leaky_re_lu_3, NPU, npu_fusion_node_conv2d_3_leaky_re_lu_3_max_pooling2d_3,
+22, leaky_re_lu_4, leaky_re_lu_4, NPU, npu_fusion_node_conv2d_4_leaky_re_lu_4_max_pooling2d_4,
+23, leaky_re_lu_5, leaky_re_lu_5, NPU, npu_fusion_node_conv2d_5_leaky_re_lu_5,
+24, leaky_re_lu_6, leaky_re_lu_6, NPU, npu_fusion_node_conv2d_6_leaky_re_lu_6,
+25, leaky_re_lu_7, leaky_re_lu_7, NPU, npu_fusion_node_conv2d_7_leaky_re_lu_7,
+26, leaky_re_lu_8, leaky_re_lu_8, NPU, npu_fusion_node_conv2d_8_leaky_re_lu_8,
+27, leaky_re_lu_9, leaky_re_lu_9, NPU, npu_fusion_node_conv2d_9_leaky_re_lu_9,
+28, max_pooling2d_1, max_pooling2d_1, NPU, npu_fusion_node_conv2d_1_leaky_re_lu_1_max_pooling2d_1,
+29, max_pooling2d_2, max_pooling2d_2, NPU, npu_fusion_node_conv2d_2_leaky_re_lu_2_max_pooling2d_2,
+30, max_pooling2d_3, max_pooling2d_3, NPU, npu_fusion_node_conv2d_3_leaky_re_lu_3_max_pooling2d_3,
+31, max_pooling2d_4, max_pooling2d_4, NPU, npu_fusion_node_conv2d_4_leaky_re_lu_4_max_pooling2d_4,
+32, max_pooling2d_5, max_pooling2d_5, NPU, max_pooling2d_5,
+33, max_pooling2d_6, max_pooling2d_6, NPU, max_pooling2d_6,
+34, up_sampling2d_1, up_sampling2d_1, CPU, cpu_fusion_node_up_sampling2d_1,
+``
+
 
 
 
