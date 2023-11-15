@@ -108,9 +108,6 @@ RUN cd examples/darknet && /workspace/miniconda/bin/python /data1/keras_yolo3/co
 
 ```bash
 cd examples/darknet
-```
-
-```bash
 python compile.py 520
 ```
 
