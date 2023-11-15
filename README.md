@@ -579,17 +579,17 @@ C:\msys64\home\kneron_plus\build\bin>kl520_demo_cam_generic_image_inference_drop
 
 # Quiz
 
-#### Why choose `v0.23.0` instead of `latest` ? 
+#### 1. Why choose `v0.23.0` instead of `latest` ? 
 
-#### While coding python, can we use <TAB> to replace the leading space? 
+#### 2. While coding python, can we use <TAB> to replace the leading space? 
 
-#### How to Convert YOLOv3 weights to ONNX? 
+#### 3. How to Convert YOLOv3 weights to ONNX? 
 
-#### While invoking a python function with a list of parameters, could we change the order of the given list? 
+#### 4. While invoking a python function with a list of parameters, could we change the order of the given list? 
 
-#### Could we use ${PYTHONPATH} to replece `sys.path.append(str(pathlib.Path("/data1/keras_yolo3").resolve()))` described above?
+#### 5. Could we use ${PYTHONPATH} to replece `sys.path.append(str(pathlib.Path("/data1/keras_yolo3").resolve()))` described above?
 
-#### Why we set const `IMPUT_NAMES` to `'input_1_o0'` ? How the `'input_1_o0'` to be determined? 
+#### 6. Why we set const `IMPUT_NAMES` to `'input_1_o0'` ? How the given `'input_1_o0'` to be determined? 
 
 
 
