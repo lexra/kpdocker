@@ -106,6 +106,7 @@ RUN cd examples/darknet && /workspace/miniconda/bin/python /data1/keras_yolo3/co
  => naming to docker.io/kneron/toolchain:vim
 (base) root@3afddac34919:/workspace#
 ```
+
 ```bash
 cd examples/darknet
 python compile.py 520
@@ -167,6 +168,7 @@ RUN wget https://www.kneron.com/forum/uploads/112/SMZ3HLBK3DXJ.7z -O SMZ3HLBK3DX
  => naming to docker.io/kneron/toolchain:vim
 (base) root@3afddac34919:/workspace#
 ```
+
 ```bash
 cd examples/freihand2d
 python compile.py
@@ -574,6 +576,20 @@ cd C:\msys64\home\kneron_plus\build\bin
 ```
 C:\msys64\home\kneron_plus\build\bin>kl520_demo_cam_generic_image_inference_drop_frame.exe
 ```
+
+# Quiz
+
+### Why choose `v0.23.0` instead of `latest` ? 
+
+### While coding python, can we use <TAB> to replace the leading space? 
+
+### How to Convert YOLOv3 weights to ONNX? 
+
+### While invoking a python function with a list of parameters, could we change the order of the given list of parameters? 
+
+
+
+
 
 
 
