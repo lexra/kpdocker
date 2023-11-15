@@ -494,6 +494,13 @@ det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
 ```
 
+### 3.8.1 Knef Model Inference Result
+
+```bash
+(array([[260.754,471.40704,295.3402,522.4468],
+[234.3568,210.12952,307.17825,389.8782]],dtype=float32),array([0.89978975,0.760541],dtype=float32),array([2,7],dtype=int32))
+```
+
 
 
 
