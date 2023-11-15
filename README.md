@@ -180,7 +180,7 @@ python compile.py
 ![image](https://github.com/lexra/kpdocker/assets/33512027/20d8555f-7d39-4588-9105-e9fef8fcefba)
 
 
-## 3. Workflow for Yolo Example
+## 3. Workflow for YOLOv3 Example
 
 Here we take the Yolo Example to break down the workflow. 
 
