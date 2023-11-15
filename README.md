@@ -169,7 +169,9 @@ cd examples/freihand2d
 python compile.py
 ```
 
-## 3. Workflow
+## 3. Yolo Example Workflow
+
+Here we take the Yolo Example to break down the workflow. 
 
 ### 3.1 Import
 
