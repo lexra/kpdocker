@@ -595,6 +595,7 @@ C:\msys64\home\kneron_plus\build\bin>kl520_demo_cam_generic_image_inference_drop
 
 #### 8. About `Workflow for Yolo Example` described above, is there any step that we could skip? If the answer is `possitive`, which steps?
 
+#### 9. Why we invoke `ktc.convert_channel_last_to_first()` before `preprocess()` returns? 
 
 
 
