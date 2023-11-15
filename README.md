@@ -169,7 +169,7 @@ cd examples/freihand2d
 python compile.py
 ```
 
-## 3. Yolo Example Workflow
+## 3. Workflow for Yolo Example
 
 Here we take the Yolo Example to break down the workflow. 
 
