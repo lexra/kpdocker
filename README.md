@@ -470,8 +470,8 @@ print(det_res)
 
 It's very important to note that 2 types of the given `520` passed to ktc.kneron_inference() VS. to ktc.ModelConfig() are different. 
 
-* The given `520` type is INT for ktc.kneron_inference(); and 
-* The given `520` type is STRING for ktc.ModelConfig(). 
+* The given `520` type is INT for ktc.kneron_inference() to which the `520` is passed; and 
+* The given `520` type is STRING for ktc.ModelConfig() to which the `520` is passed. 
 
 #### 3.9.3 Bie Model Inference Result
 
