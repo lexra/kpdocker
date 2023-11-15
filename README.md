@@ -92,6 +92,12 @@ RUN cd examples/darknet && /workspace/miniconda/bin/python /data1/keras_yolo3/co
     yolov3-tiny.cfg yolov3-tiny.weights yolov3-tiny.h5 && cd -
 ```
 
+```bash
+cd examples/darknet
+python compile.py 520
+```
+
+
 ### 2.2 Wheelchair Weights
 
 ```bash
