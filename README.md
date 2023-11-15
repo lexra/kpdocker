@@ -75,7 +75,7 @@ docker run --rm -it -v ${DOCKER_MOUNT}:/docker_mount kneron/toolchain:vim
 
 ## 2. Examples Preparation
 
-### 2.1 Darknet weights
+### 2.1 Darknet Weights
 
 ```bash
 RUN mkdir -p examples/darknet
@@ -92,7 +92,7 @@ RUN cd examples/darknet && /workspace/miniconda/bin/python /data1/keras_yolo3/co
     yolov3-tiny.cfg yolov3-tiny.weights yolov3-tiny.h5 && cd -
 ```
 
-### 2.2 Wheelchair weights
+### 2.2 Wheelchair Weights
 
 ```bash
 RUN mkdir -p examples/wheelchair
