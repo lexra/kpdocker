@@ -381,6 +381,14 @@ det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
 ```
 
+### 3.7 Compile
+
+```python
+# compile
+nef_model_path = ktc.compile([km])
+print("\nCompile done. Save Nef file to '" + str(nef_model_path) + "'")
+```
+
 
 
 
