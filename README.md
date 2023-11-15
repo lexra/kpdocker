@@ -343,6 +343,10 @@ gen fx model report: model_fx_report.html
 34, up_sampling2d_1, up_sampling2d_1, CPU, cpu_fusion_node_up_sampling2d_1,
 ```
 
+#### 3.6.4 Hardware Supported Operators
+
+Refer to the official document, <a href=https://doc.kneron.com/docs/#toolchain/appendix/operators>Operator</a> .
+
 ### 3.7 Onnx Model Check
 
 #### 3.7.1 Postprocess
