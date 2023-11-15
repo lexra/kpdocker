@@ -466,11 +466,14 @@ det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
 ```
 
-#### 3.9.2 The given `520` passed to ktc.kneron_inference() VS. passed to ktc.ModelConfig()
+#### 3.9.2 The given `520` passed to ktc.kneron_inference() and passed to ktc.ModelConfig()
 
-It's very important to note that 2 TYPEs of the given `520` passed to ktc.kneron_inference() VS. to ktc.ModelConfig() are different; 
-the given `520` type is INT for ktc.kneron_inference(); and 
-the given `520` type is STRING for ktc.ModelConfig(). 
+It's very important to note that 2 types of the given `520` passed to ktc.kneron_inference() VS. to ktc.ModelConfig() are different. 
+
+```
+The given `520` type is INT for ktc.kneron_inference(); and 
+The given `520` type is STRING for ktc.ModelConfig(). 
+```
 
 ### 3.9.3 Bie Model Inference Result
 
