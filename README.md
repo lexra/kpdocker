@@ -47,7 +47,7 @@ docker run --rm -it -v /mnt/kpdocker:/docker_mount kneron/toolchain:v0.23.0
 
 ### 1.3 Build our own docker image
 
-### 1.3.1 Dockerfile
+### 1.3.1 Prepare the Dockerfile
 
 ```bash
 FROM kneron/toolchain:v0.23.0
