@@ -391,11 +391,95 @@ print(det_res)
 
 ### 3.7 Compile
 
+#### 3.7.1 Compile
+
 ```python
 nef_model_path = ktc.compile([km])
-print("\nCompile done. Save Nef file to '" + str(nef_model_path) + "'")
 ```
 
+#### 3.7.1 Result
+
+```bash
+[tool][info][batch_compile.cc:513][BatchCompile] compiling input.kdp520.scaled.bie
+[common][info][compile.cc:62][LoadCfg] Loading config.
+[piano][info][graph_gen.cc:151][GraphOptFE] Graph is generated from optimized graph, skip graph optimization
+[common][info][tgt_graph_gen.cc:31][GraphOptBE] Working on hardware relevant optimizations.
+[common][info][knerex_fp.cc:26][ReWriteKnerexInfo] radix_json specified, rewrite FP info.
+[graph][info][knerex_info_patch.cc:180][PatchKnerexInfo] patch FP info.
+[common][info][tgt_graph_gen.cc:43][GraphOptBE] Working on graph post process
+[common][info][compile.cc:250][CompileImpl] Lowering IR
+[cmd][info][cmd_node_gen.cc:701][CutAnalysis] Cutting image
+[fmcut][info][img_cut.cc:65][ImageCut] Start image cut with mode [default]
+[common][info][compile.cc:253][CompileImpl] Generating weight
+[common][info][compile.cc:257][CompileImpl] Generating command
+[cmd][info][cmd_generator.cc:395][GenCmds] Generate commands based on [45] cmd nodes
+[cmd][info][cmd_generator.cc:1377][RemoveRedundantConfCmd] 949 out of 2108 CONF cmds are optimized out
+[common][info][compile.cc:276][CompileImpl] input_size [692224], wt_size [9852368], cmd_size [5120], dram_size [1038336], sram_size [524288], fw_code_size [460]
+info:
+  dram_start: 1610612736
+  dram_size: 1038336
+  cmd_start: 0
+  cmd_size: 5120
+  input_start: 3145728
+  input_size: 692224
+  fw_code_start: 1610612736
+  fw_code_size: 460
+  input_num: 0
+  output_num: 2
+  output_size: 265200
+  output_start: 8388608
+[common][info][compile.cc:307][CompileImpl] Compilation completed.
+[tool][info][batch_compile.cc:551][LayoutBins] Re-layout binaries
+[tool][info][batch_compile.cc:601][LayoutBins] output start: 0x600e9bf0, end: 0x600e9bf0
+[tool][info][batch_compile.cc:513][BatchCompile] compiling input.kdp520.scaled.bie
+[common][info][compile.cc:62][LoadCfg] Loading config.
+[piano][info][graph_gen.cc:151][GraphOptFE] Graph is generated from optimized graph, skip graph optimization
+[common][info][tgt_graph_gen.cc:31][GraphOptBE] Working on hardware relevant optimizations.
+[common][info][knerex_fp.cc:26][ReWriteKnerexInfo] radix_json specified, rewrite FP info.
+[graph][info][knerex_info_patch.cc:180][PatchKnerexInfo] patch FP info.
+[common][info][tgt_graph_gen.cc:43][GraphOptBE] Working on graph post process
+[common][info][compile.cc:250][CompileImpl] Lowering IR
+[cmd][info][cmd_node_gen.cc:701][CutAnalysis] Cutting image
+[fmcut][info][img_cut.cc:65][ImageCut] Start image cut with mode [default]
+[common][info][compile.cc:253][CompileImpl] Generating weight
+[common][info][compile.cc:257][CompileImpl] Generating command
+[cmd][info][cmd_generator.cc:395][GenCmds] Generate commands based on [45] cmd nodes
+[cmd][info][cmd_generator.cc:1377][RemoveRedundantConfCmd] 949 out of 2108 CONF cmds are optimized out
+[common][info][compile.cc:276][CompileImpl] input_size [692224], wt_size [9852368], cmd_size [5120], dram_size [1038336], sram_size [524288], fw_code_size [460]
+info:
+  dram_start: 1611570160
+  dram_size: 1038336
+  cmd_start: 1612608496
+  cmd_size: 5120
+  input_start: 1610612736
+  input_size: 692224
+  fw_code_start: 1622465984
+  fw_code_size: 460
+  input_num: 0
+  output_num: 2
+  output_size: 265200
+  output_start: 1611304960
+[common][info][compile.cc:307][CompileImpl] Compilation completed.
+[tool][info][batch_compile.cc:711][CombineAllBin] Combine all bin files of all models into all_models.bin
+[tool][info][batch_compile.cc:787][WriteFwInfo] Generate firmware info to fw_info.txt & fw_info.bin
+[tool][info][batch_compile.cc:653][VerifyOutput]
+=> 1 models
+[tool][info][batch_compile.cc:661][VerifyOutput]      id: 32769
+[tool][info][batch_compile.cc:662][VerifyOutput]      version: 0x1
+[tool][info][batch_compile.cc:667][VerifyOutput]      addr: 0x60000000, size: 0xa9000
+[tool][info][batch_compile.cc:667][VerifyOutput]      addr: 0x600a9000, size: 0x40bf0
+[tool][info][batch_compile.cc:667][VerifyOutput]      addr: 0x600e9bf0, size: 0xfd800
+[tool][info][batch_compile.cc:667][VerifyOutput]      addr: 0x601e73f0, size: 0x1400
+[tool][info][batch_compile.cc:667][VerifyOutput]      addr: 0x601e87f0, size: 0x9655d0
+[tool][info][batch_compile.cc:667][VerifyOutput]      addr: 0x60b4ddc0, size: 0x1cc
+[tool][info][batch_compile.cc:670][VerifyOutput]
+
+[tool][info][batch_compile.cc:674][VerifyOutput]   end addr 0x60b4df8c,
+[tool][info][batch_compile.cc:676][VerifyOutput] total bin size 0x966b9c
+[tool][info][batch_compile.cc:1233][main] batch_compile complete[0]
+
+Compile done. Save Nef file to '/data1/kneron_flow/models_520.nef'
+```
 
 
 
