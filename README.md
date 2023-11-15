@@ -239,12 +239,33 @@ m = ktc.onnx_optimizer.onnx2onnx_flow(m)
 onnx.save(m, 'yolov3-tiny.opt.onnx')
 ```
 
-### 3.6 IP Evaluate (NPU Performance Simulation)
+### 3.6 IP Evaluate
+
+#### 3.6.1 Preprocess() Function
+
+```python
+def preprocess(pil_img):
+    model_input_size = (416, 416)  # to match our model input size when converting
+    boxed_image = letterbox_image(pil_img, model_input_size)
+    np_data = np.array(boxed_image, dtype='float32')
+    # change normalization method due to we add "pixel_modify" BN node at model's front
+    #np_data /= 255.
+    if IN_MODEL_PREPROCESS == True:
+        np_data -= 128
+    else: 
+        np_data /= 255.
+    np_data = ktc.convert_channel_last_to_first(np_data)
+    return np_data
+```
+
+#### 3.6.2 NPU Performance Simulation
 
 ```python
 km = ktc.ModelConfig(32769, "0001", '520', onnx_model=m)
 eval_result = km.evaluate()
 ```
+
+#### 3.6.3 NPU Performance Simulation Report
 
 ```bash
 ===========================================
