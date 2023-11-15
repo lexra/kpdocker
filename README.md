@@ -39,7 +39,7 @@ curl https://registry.hub.docker.com/v2/repositories/kneron/toolchain/tags \
 
 Here we choose `v0.23.0` instead of `latest` .
 
-### 1.2 Pull the Docker Image and login to the Docker
+### 1.2 Pull the Docker Image and Login to the Docker
 
 ```bash
 docker pull kneron/toolchain:v0.23.0
@@ -64,7 +64,7 @@ RUN /workspace/miniconda/bin/pip install gdown
 ###########################################################
 RUN cd /data1 && git clone https://github.com/qqwweee/keras-yolo3.git keras_yolo3 && cd -
 ```
-### 1.3.2 Docker build login to Our Own Docker
+### 1.3.2 Docker build and Login to Our Own Docker
 
 ```
 export DOCKER_MOUNT=/mnt/kpdocker
@@ -76,6 +76,8 @@ docker run --rm -it -v ${DOCKER_MOUNT}:/docker_mount kneron/toolchain:vim
 ## 2. Examples
 
 ### 2.1 Darknet Weights
+
+#### 2.1.1 Dockerfile
 
 ```bash
 RUN mkdir -p examples/darknet
@@ -92,8 +94,22 @@ RUN cd examples/darknet && /workspace/miniconda/bin/python /data1/keras_yolo3/co
     yolov3-tiny.cfg yolov3-tiny.weights yolov3-tiny.h5 && cd -
 ```
 
+#### 2.1.2 Login to Our Own Docker
+
+```bash
+ => => exporting layers                                                                                                                                                                                                                 0.0s
+ => => writing image sha256:35e3c0feaa4c776b7f780fc62c17dbb8395d3697080ee10d9c0a35ff8e4ff269                                                                                                                                            0.0s
+ => => naming to docker.io/kneron/toolchain:vim                                                                                                                                                                                         0.0s
+(base) root@3afddac34919:/workspace#
+```
+
+#### 2.1.3 Compilation
+
 ```bash
 cd examples/darknet
+```
+
+```bash
 python compile.py 520
 ```
 
