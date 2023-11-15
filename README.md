@@ -231,10 +231,10 @@ TEST_LIST: Test Pictures List
 
 TEST_PICTURE: One Picture for Test
 
-#### 3.2.1 Notice
+#### 3.2.1 CLASSES, CHANNELS, WIDTH, HEIGHT
 
 It's very important to check the given cfg, `yolov3-tiny.cfg`, precisely conform to the given weights, `yolov3-tiny.weights`. 
-We provide function() to runtime the necessary values into the workflow on 'classes', 'channels', 'width', 'height', from the given cfg; 
+We provide function() to runtime update the necessary values into the workflow on 'classes', 'channels', 'width', 'height', from the given cfg; 
 hence it's not necessary to modify the workflow source code. 
 
 ```
@@ -251,10 +251,10 @@ def darknetKeyValue(cfg, key):
                 return m.group(1)
     return None
 
-CLASSES = int(darknetKeyValue(CWD + NAME + '.cfg', key='classes'))
-CHANNELS = int(darknetKeyValue(CWD + NAME + '.cfg', key='channels'))
-WIDTH = int(darknetKeyValue(CWD + NAME + '.cfg', key='width'))
-HEIGHT = int(darknetKeyValue(CWD + NAME + '.cfg', key='height'))
+CLASSES = int(darknetKeyValue(cfg = CWD + NAME + '.cfg', key = 'classes'))
+CHANNELS = int(darknetKeyValue(cfg = CWD + NAME + '.cfg', key = 'channels'))
+WIDTH = int(darknetKeyValue(cfg = CWD + NAME + '.cfg', key = 'width'))
+HEIGHT = int(darknetKeyValue(key = 'height', cfg = CWD + NAME + '.cfg'))
 ```
 
 ### 3.3 Model Conversion
