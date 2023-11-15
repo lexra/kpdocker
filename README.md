@@ -334,7 +334,6 @@ print(det_res)
 #### 3.7.1 Normalize All Images from a List of Test Pictures
 
 ```python
-print('')
 img_list = []
 with open ('test_image10.txt', "r") as myfile:
     lines = myfile.read().splitlines()
@@ -348,7 +347,7 @@ for item in lines:
 #### 3.7.1 Analysis
 
 ```python
-bie_model_path = km.analysis({'input_1_o0': img_list}, output_dir='/data1/kneron_flow', threads=4, quantize_mode='default', datapath_range_method='percentage', fm_cut='deep_search', mode=1)
+bie_model_path = km.analysis({'input_1_o0': img_list})
 print("\nFix point analysis done. Save bie model to '" + str(bie_model_path) + "'")
 ```
 
