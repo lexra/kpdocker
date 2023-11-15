@@ -551,10 +551,12 @@ print(det_res)
 [234.3568,210.12952,307.17825,389.8782]],dtype=float32),array([0.89978975,0.760541],dtype=float32),array([2,7],dtype=int32))
 ```
 
-### 3.12 Copy the Compiled Model from Docker to Host
+### 3.12 Copy the Compiled Model from Docker
 
 ```bash
-(base) root@48b04a35dc1a:/workspace/examples/darknet# cp -fv /data1/kneron_flow/models_520.nef /docker_mount
+(base) root@48b04a35dc1a:/workspace/examples/darknet# \
+    cp -fv /data1/kneron_flow/models_520.nef /docker_mount
+
 '/data1/kneron_flow/models_520.nef' -> '/docker_mount/models_520.nef'
 ```
 
