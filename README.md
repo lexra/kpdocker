@@ -78,6 +78,8 @@ docker run --rm -it -v ${DOCKER_MOUNT}:/docker_mount kneron/toolchain:vim
 
 ## 2. Examples
 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/4eYeoeOMUE0/0.jpg)](https://www.youtube.com/watch?v=4eYeoeOMUE0)
+
 ### 2.1 Darknet Weights
 
 #### 2.1.1 Dockerfile
@@ -131,8 +133,6 @@ RUN cd examples/wheelchair && cat wheelchair.cfg | grep anchors | tail -1 | awk 
 RUN cd examples/wheelchair && /workspace/miniconda/bin/python /data1/keras_yolo3/convert.py \
     ./wheelchair.cfg ./wheelchair.weights ./wheelchair.h5 && cd -
 ```
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/4eYeoeOMUE0/0.jpg)](https://www.youtube.com/watch?v=4eYeoeOMUE0)
 
 #### 2.2.2 Login to Our Own Docker and Compilation
 
