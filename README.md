@@ -525,7 +525,7 @@ Compile done. Save Nef file to '/data1/kneron_flow/models_520.nef'
 
 ### 3.11 Knef Model Ckeck
 
-### 3.11.1 Knef Model Inference
+#### 3.11.1 Knef Model Inference
 
 ```python
 input_image = Image.open('000000350003.jpg')
@@ -536,12 +536,43 @@ det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
 ```
 
-### 3.11.2 Knef Model Inference Result
+#### 3.11.2 Knef Model Inference Result
 
 ```bash
 (array([[260.754,471.40704,295.3402,522.4468],
 [234.3568,210.12952,307.17825,389.8782]],dtype=float32),array([0.89978975,0.760541],dtype=float32),array([2,7],dtype=int32))
 ```
+
+### 3.12 Copy the Compiled Model from Docker to Host
+
+```bash
+(base) root@48b04a35dc1a:/workspace/examples/darknet# cp -fv /data1/kneron_flow/models_520.nef /docker_mount
+'/data1/kneron_flow/models_520.nef' -> '/docker_mount/models_520.nef'
+```
+
+After exit our own `Docker`, the copied Model (`models_520.nef`) can be found in `/mnt/kpdocker` . 
+
+## 4. Run Time Test
+
+First, we have to plug the `KL520` dongle into the `Notebook` USB port; then follow the steps below:
+
+### 4.1 Replace The Model in `kneron_plus` related Path. 
+
+```
+cd C:\msys64\home\kneron_plus\res\models\KL520\tiny_yolo_v3
+```
+
+### 4.2 Run the `kl520_demo_cam_generic_image_inference_drop_frame`
+
+```
+cd C:\msys64\home\kneron_plus\build\bin
+```
+
+```
+C:\msys64\home\kneron_plus\build\bin>kl520_demo_cam_generic_image_inference_drop_frame.exe
+```
+
+
 
 
 
