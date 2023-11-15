@@ -577,7 +577,7 @@ cd C:\msys64\home\kneron_plus\build\bin
 C:\msys64\home\kneron_plus\build\bin>kl520_demo_cam_generic_image_inference_drop_frame.exe
 ```
 
-# Quizzes
+# Quiz
 
 #### Why choose `v0.23.0` instead of `latest` ? 
 
