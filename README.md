@@ -334,7 +334,26 @@ gen fx model report: model_fx_report.html
 
 ### 3.7 Onnx Model Check
 
-#### 3.7.1 E2E simulator Inference
+#### 3.7.1 Postprocess
+
+```python
+def postprocess(inf_results, ori_image_shape):
+    tensor_data = [tf.convert_to_tensor(data, dtype=tf.float32) for data in inf_results]
+    anchors_path = 'yolov3-tiny.anchors'
+    with open(anchors_path) as f:
+        anchors = f.readline()
+    anchors = [float(x) for x in anchors.split(',')]
+    anchors = np.array(anchors).reshape(-1, 2)
+    num_classes = CLASSES
+    boxes, scores, classes = yolo_eval(tensor_data, anchors, num_classes, ori_image_shape)
+    with tf.compat.v1.Session() as sess:
+        boxes = boxes.eval()
+        scores = scores.eval()
+        classes = classes.eval()
+    return boxes, scores, classes
+```
+
+#### 3.7.2 E2E simulator Inference
 
 ```python
 input_image = Image.open('000000350003.jpg')
@@ -345,7 +364,7 @@ det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
 ```
 
-#### 3.7.2 E2E simulator Inference Result
+#### 3.7.3 E2E simulator Inference Result
 
 ```bash
 (array([[258.89148,470.26517,297.0268,524.3218],
