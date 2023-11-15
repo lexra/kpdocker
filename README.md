@@ -308,7 +308,7 @@ gen fx model report: model_fx_report.html
 32, max_pooling2d_5, max_pooling2d_5, NPU, max_pooling2d_5,
 33, max_pooling2d_6, max_pooling2d_6, NPU, max_pooling2d_6,
 34, up_sampling2d_1, up_sampling2d_1, CPU, cpu_fusion_node_up_sampling2d_1,
-``
+```
 
 
 
