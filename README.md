@@ -577,15 +577,15 @@ cd C:\msys64\home\kneron_plus\build\bin
 C:\msys64\home\kneron_plus\build\bin>kl520_demo_cam_generic_image_inference_drop_frame.exe
 ```
 
-# Quiz
+# Quizzes
 
-### Why choose `v0.23.0` instead of `latest` ? 
+#### Why choose `v0.23.0` instead of `latest` ? 
 
-### While coding python, can we use <TAB> to replace the leading space? 
+#### While coding python, can we use <TAB> to replace the leading space? 
 
-### How to Convert YOLOv3 weights to ONNX? 
+#### How to Convert YOLOv3 weights to ONNX? 
 
-### While invoking a python function with a list of parameters, could we change the order of the given list of parameters? 
+#### While invoking a python function with a list of parameters, could we change the order of the given list of parameters? 
 
 
 
