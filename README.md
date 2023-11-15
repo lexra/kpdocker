@@ -174,6 +174,9 @@ cd examples/freihand2d
 python compile.py
 ```
 
+![image](https://github.com/lexra/kpdocker/assets/33512027/20d8555f-7d39-4588-9105-e9fef8fcefba)
+
+
 ## 3. Workflow for Yolo Example
 
 Here we take the Yolo Example to break down the workflow. 
@@ -579,23 +582,25 @@ C:\msys64\home\kneron_plus\build\bin>kl520_demo_cam_generic_image_inference_drop
 
 # Quiz
 
-#### 1. Why choose `v0.23.0` instead of `latest` ? 
+1. Why choose `v0.23.0` instead of `latest`? 
 
-#### 2. While coding python, can we use <TAB> to replace the leading space? 
+2. While coding python, can we use <TAB> to replace the leading space? 
 
-#### 3. How to Convert YOLOv3 weights to ONNX? 
+3. How to Convert YOLOv3 weights to ONNX? 
 
-#### 4. While invoking a python function with a list of parameters, could we change the order of the given list? 
+4. While invoking a python function with a list of parameters, could we change the order of the given list? 
 
-#### 5. Could we use ${PYTHONPATH} to replece `sys.path.append(str(pathlib.Path("/data1/keras_yolo3").resolve()))` described above?
+5. Could we use ${PYTHONPATH} to replece `sys.path.append(str(pathlib.Path("/data1/keras_yolo3").resolve()))` described above?
 
-#### 6. Why we set const `IMPUT_NAMES` to `'input_1_o0'` ? How the given `'input_1_o0'` to be determined? 
+6. Why we set const `IMPUT_NAMES` to `'input_1_o0'` ? How the given `'input_1_o0'` to be determined? 
 
-#### 7. About `input_image = Image.open('000000350003.jpg')`, could we use a png file instead? 
+7. About `input_image = Image.open('000000350003.jpg')`, could we use a png file instead? 
 
-#### 8. About `Workflow for Yolo Example` described above, is there any step that we could skip? If the answer is `possitive`, which steps?
+8. About `Workflow for Yolo Example` described above, is there any step that we could skip? If the answer is `possitive`, which steps?
 
-#### 9. Why we invoke `ktc.convert_channel_last_to_first()` before `preprocess()` returns? 
+9. The official documentation didn't invoke `ktc.convert_channel_last_to_first()` in `preprocess()`, Why we invoke `ktc.convert_channel_last_to_first()` before `preprocess()` returns? 
+
+10. Could anybody explain what is `freihand2d`?
 
 
 
