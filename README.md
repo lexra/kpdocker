@@ -173,6 +173,10 @@ python compile.py
 
 Here we take the Yolo Example to break down the workflow. 
 
+The followings are Official Documents related for YOLOv3: 
+* `YOLOv3 Step by Step`: https://doc.kneron.com/docs/#toolchain/appendix/yolo_example
+* `YOLOv3 with In-Model-Preprocess trick Step by Step`: https://doc.kneron.com/docs/#toolchain/appendix/yolo_example_InModelPreproc_trick
+
 ### 3.1 Import
 
 ```
