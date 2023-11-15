@@ -182,7 +182,19 @@ Convert yolov3 weights to Keras h5.
     yolov3-tiny.cfg yolov3-tiny.weights yolov3-tiny.h5
 ```
 
+### 3.2 Convert from Keras h5 to Onnx
 
+```python
+m = ktc.onnx_optimizer.keras2onnx_flow('yolov3-tiny.h5', optimize=0, input_shape=[1,WIDTH,HEIGHT,CHANNELS])
+m = ktc.onnx_optimizer.onnx2onnx_flow(m)
+```
+
+### 3.3 Onnx Optimization
+
+```python
+m = ktc.onnx_optimizer.onnx2onnx_flow(m)
+onnx.save(m, 'yolov3-tiny.opt.onnx')
+```
 
 
 
