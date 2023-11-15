@@ -587,6 +587,8 @@ C:\msys64\home\kneron_plus\build\bin>kl520_demo_cam_generic_image_inference_drop
 
 #### While invoking a python function with a list of parameters, could we change the order of the given list of parameters? 
 
+#### Could we use ${PYTHONPATH} to replece `sys.path.append(str(pathlib.Path("/data1/keras_yolo3").resolve()))` described above?
+
 
 
 
