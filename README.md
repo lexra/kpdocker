@@ -562,7 +562,7 @@ print(det_res)
 
 After exit our own `Docker`, the copied Model, `models_520.nef`, can be found in `/mnt/kpdocker` . 
 
-## 4. Run Time Test
+## 4. Run Time
 
 First, we have to plug the `KL520` dongle into the `Notebook` USB port; then follow the steps below:
 
