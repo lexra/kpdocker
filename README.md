@@ -60,8 +60,10 @@ RUN /workspace/miniconda/bin/pip install gdown
 
 ```
 export DOCKER_MOUNT=/mnt/kpdocker
-mkdir -p ${DOCKER_MOUNT}
+
 docker build -t="kneron/toolchain:vim" .
+
+mkdir -p ${DOCKER_MOUNT}
 docker run --rm -it -v ${DOCKER_MOUNT}:/docker_mount kneron/toolchain:vim
 ```
 
