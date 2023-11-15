@@ -196,7 +196,9 @@ CWD = '/workspace/examples/darknet/'
 NAME = 'yolov3-tiny'
 IN_MODEL_PREPROCESS = True
 TEST_LIST = 'test_image10.txt'
+TEST_PICTURE = '000000350003.jpg'
 IMPUT_NAMES = 'input_1_o0'
+
 DEVICE = '520'
 CLASSES = 80
 CHANNELS = 3
