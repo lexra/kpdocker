@@ -311,6 +311,8 @@ gen fx model report: model_fx_report.html
 
 ### 3.6 Onnx Model Check
 
+#### 3.6.1 Python Code
+
 ```python
 input_image = Image.open('000000350003.jpg')
 in_data = preprocess(input_image)
@@ -318,6 +320,13 @@ input_image.close()
 out_data = ktc.kneron_inference([in_data], onnx_file=CWD + NAME + '.opt.onnx', input_names=['input_1_o0'])
 det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
+```
+
+#### 3.6.1 E2E simulator Inference Result
+
+```bash
+(array([[258.89148, 470.26517, 297.0268 , 524.3218 ],
+       [233.60538, 218.18251, 306.83316, 381.80396]], dtype=float32), array([0.9251516, 0.787214 ], dtype=float32), array([2, 7], dtype=int32))
 ```
 
 
