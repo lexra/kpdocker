@@ -311,7 +311,7 @@ gen fx model report: model_fx_report.html
 
 ### 3.6 Onnx Model Check
 
-#### 3.6.1 Python Code
+#### 3.6.1 E2E simulator Inference
 
 ```python
 input_image = Image.open('000000350003.jpg')
