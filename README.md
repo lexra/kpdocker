@@ -372,6 +372,8 @@ Fix point analysis done. Save bie model to '/data1/kneron_flow/input.kdp520.scal
 
 ### 3.7 Bie Model Check
 
+### 3.7.1 Bie Model Generation
+
 ```python
 input_image = Image.open('000000350003.jpg')
 in_data = preprocess(input_image)
@@ -379,6 +381,12 @@ input_image.close()
 out_data = ktc.kneron_inference([in_data], bie_file=bie_model_path, input_names=['input_1_o0'], platform=520)
 det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
+```
+### 3.7.1 Bie Model Inference Result
+
+```bash
+(array([[260.754 ,471.40704,295.3402,522.4468],
+[234.3568,210.12952,307.17825,389.8782]],dtype=float32),array([0.89978975,0.760541],dtype=float32),array([2,7],dtype=int32))
 ```
 
 ### 3.7 Compile
