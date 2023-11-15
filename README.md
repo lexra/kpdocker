@@ -252,10 +252,7 @@ eval_result = km.evaluate()
                 kdp520                                                                                 general
                gen_nef     FPS batch compiler compiler frontend compiler hw info compiler_cfg cpu_node Success onnx size (MB)
 category case
-input    input       ✓  21.352              ✓                 ✓                ✓            ✓      N/A       ✓             33
-
-
-
+input    input       ✓  21.352              ✓                 ✓                ✓            ✓      N/A       ✓           33
 
 Npu performance evaluation result:
 docker_version: kneron/toolchain:v0.23.0
