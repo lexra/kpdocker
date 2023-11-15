@@ -245,11 +245,9 @@ onnx.save(m, 'yolov3-tiny.opt.onnx')
 
 ```python
 def preprocess(pil_img):
-    model_input_size = (416, 416)  # to match our model input size when converting
+    model_input_size = (416, 416)
     boxed_image = letterbox_image(pil_img, model_input_size)
     np_data = np.array(boxed_image, dtype='float32')
-    # change normalization method due to we add "pixel_modify" BN node at model's front
-    #np_data /= 255.
     if IN_MODEL_PREPROCESS == True:
         np_data -= 128
     else: 
@@ -330,9 +328,9 @@ gen fx model report: model_fx_report.html
 34, up_sampling2d_1, up_sampling2d_1, CPU, cpu_fusion_node_up_sampling2d_1,
 ```
 
-### 3.6 Onnx Model Check
+### 3.7 Onnx Model Check
 
-#### 3.6.1 E2E simulator Inference
+#### 3.7.1 E2E simulator Inference
 
 ```python
 input_image = Image.open('000000350003.jpg')
@@ -343,16 +341,16 @@ det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
 ```
 
-#### 3.6.1 E2E simulator Inference Result
+#### 3.7.2 E2E simulator Inference Result
 
 ```bash
 (array([[258.89148,470.26517,297.0268,524.3218],
 [233.60538,218.18251,306.83316,381.80396]],dtype=float32),array([0.9251516,0.787214],dtype=float32),array([2,7],dtype=int32))
 ```
 
-### 3.7 Fix Point Analysis
+### 3.8 Fix Point Analysis
 
-#### 3.7.1 Normalize All Images from a List of Test Pictures
+#### 3.8.1 Normalize All Images from a List of Test Pictures
 
 ```python
 img_list = []
@@ -365,7 +363,7 @@ for item in lines:
     image.close()
 ```
 
-#### 3.7.1 Analysis
+#### 3.8.2 Analysis
 
 ```python
 bie_model_path = km.analysis({'input_1_o0': img_list})
@@ -391,9 +389,9 @@ input    input      ✓       ✓  21.352              ✓                 ✓  
 Fix point analysis done. Save bie model to '/data1/kneron_flow/input.kdp520.scaled.bie'
 ```
 
-### 3.7 Bie Model Check
+### 3.9 Bie Model Check
 
-### 3.7.1 Bie Model Generation
+### 3.9.1 Bie Model Generation
 
 ```python
 input_image = Image.open('000000350003.jpg')
@@ -403,22 +401,22 @@ out_data = ktc.kneron_inference([in_data], bie_file=bie_model_path, input_names=
 det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
 ```
-### 3.7.1 Bie Model Inference Result
+### 3.9.2 Bie Model Inference Result
 
 ```bash
 (array([[260.754 ,471.40704,295.3402,522.4468],
 [234.3568,210.12952,307.17825,389.8782]],dtype=float32),array([0.89978975,0.760541],dtype=float32),array([2,7],dtype=int32))
 ```
 
-### 3.7 Compile
+### 3.10 Compile
 
-#### 3.7.1 Compile
+#### 3.10.1 Compile
 
 ```python
 nef_model_path = ktc.compile([km])
 ```
 
-#### 3.7.1 Result
+#### 3.10.2 Result
 
 ```bash
 [tool][info][batch_compile.cc:513][BatchCompile] compiling input.kdp520.scaled.bie
@@ -502,9 +500,9 @@ info:
 Compile done. Save Nef file to '/data1/kneron_flow/models_520.nef'
 ```
 
-### 3.8 Knef Model Ckeck
+### 3.11 Knef Model Ckeck
 
-### 3.8.1 Knef Model Inference
+### 3.11.1 Knef Model Inference
 
 ```python
 input_image = Image.open('000000350003.jpg')
@@ -515,13 +513,12 @@ det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
 ```
 
-### 3.8.1 Knef Model Inference Result
+### 3.11.2 Knef Model Inference Result
 
 ```bash
 (array([[260.754,471.40704,295.3402,522.4468],
 [234.3568,210.12952,307.17825,389.8782]],dtype=float32),array([0.89978975,0.760541],dtype=float32),array([2,7],dtype=int32))
 ```
-
 
 
 
