@@ -351,6 +351,24 @@ bie_model_path = km.analysis({'input_1_o0': img_list})
 print("\nFix point analysis done. Save bie model to '" + str(bie_model_path) + "'")
 ```
 
+```bash
+ Success for model "input/input" when running "general/Success"
+
+
+===========================================
+=            report on flow status        =
+===========================================
+
+               kdp520                                                                                                                                                             general
+               knerex gen_nef     FPS batch compiler compiler frontend compiler hw info compiler_cfg cpu_node dp analysis buf (KB) dp analysis total (KB) dp_analysis result (KB) Success onnx size (MB)
+category case
+input    input      ✓       ✓  21.352              ✓                 ✓                ✓            ✓      N/A                21633                  21773                     140       ✓             33
+
+
+
+
+Fix point analysis done. Save bie model to '/data1/kneron_flow/input.kdp520.scaled.bie'
+```
 
 
 
