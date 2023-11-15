@@ -231,6 +231,31 @@ TEST_LIST: Test Pictures List
 
 TEST_PICTURE: One Picture for Test
 
+#### 3.2.1 Note
+
+It's very important to check the given cfg, `yolov3-tiny.cfg`, precisely conform to the given weights, `yolov3-tiny.weights`. 
+Hence we provide function() to runtime modify values, 'classes', 'channels', 'width', 'height', from the given cfg. 
+
+```
+def darknetKeyValue(cfg, key):
+    with open(cfg, "r") as f:
+        while True:
+            lineN = f.readline()
+            if not lineN:
+                break
+            pattern = r"^" + key + "\s{0,}=\s{0,}(\w+)$"
+            line = lineN.rstrip()
+            m = re.match(pattern, line)
+            if m:
+                return m.group(1)
+    return None
+
+CLASSES = int(darknetKeyValue(CWD + NAME + '.cfg', key='classes'))
+CHANNELS = int(darknetKeyValue(CWD + NAME + '.cfg', key='channels'))
+WIDTH = int(darknetKeyValue(CWD + NAME + '.cfg', key='width'))
+HEIGHT = int(darknetKeyValue(CWD + NAME + '.cfg', key='height'))
+```
+
 ### 3.3 Model Conversion
 
 Convert yolov3 weights to Keras h5. 
