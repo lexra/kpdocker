@@ -455,7 +455,7 @@ Fix point analysis done. Save bie model to '/data1/kneron_flow/input.kdp520.scal
 
 ### 3.9 Bie Model Check
 
-### 3.9.1 Bie Model Generation
+#### 3.9.1 Bie Model Generation
 
 ```python
 input_image = Image.open('000000350003.jpg')
@@ -470,12 +470,10 @@ print(det_res)
 
 It's very important to note that 2 types of the given `520` passed to ktc.kneron_inference() VS. to ktc.ModelConfig() are different. 
 
-```
-The given `520` type is INT for ktc.kneron_inference(); and 
-The given `520` type is STRING for ktc.ModelConfig(). 
-```
+* The given `520` type is INT for ktc.kneron_inference(); and 
+* The given `520` type is STRING for ktc.ModelConfig(). 
 
-### 3.9.3 Bie Model Inference Result
+#### 3.9.3 Bie Model Inference Result
 
 ```bash
 (array([[260.754 ,471.40704,295.3402,522.4468],
