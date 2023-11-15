@@ -558,7 +558,7 @@ print(det_res)
 '/data1/kneron_flow/models_520.nef' -> '/docker_mount/models_520.nef'
 ```
 
-After exit our own `Docker`, the copied Model (`models_520.nef`) can be found in `/mnt/kpdocker` . 
+After exit our own `Docker`, the copied Model, `models_520.nef`, can be found in `/mnt/kpdocker` . 
 
 ## 4. Run Time Test
 
