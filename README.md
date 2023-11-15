@@ -142,8 +142,6 @@ cd examples/wheelchair
 python compile.py 520
 ```
 
-
-
 ### 2.3 Freihand2d Onnx
 
 #### 2.3.1 Dockerfile
@@ -172,6 +170,39 @@ python compile.py
 ```
 
 ## 3. Workflow
+
+### 3.1 Import
+
+```
+import ktc
+import os
+import onnx
+from PIL import Image
+import numpy as np
+import re
+
+import tensorflow as tf
+import pathlib
+import sys
+sys.path.append(str(pathlib.Path("/data1/keras_yolo3").resolve()))
+from yolo3.model import yolo_eval
+from yolo3.utils import letterbox_image
+```
+
+### Const Value that you have to Check
+
+```python
+CWD = '/workspace/examples/darknet/'
+NAME = 'yolov3-tiny'
+In_Model_Preprocess = True
+TEST_LIST = 'test_image10.txt'
+IMPUT_NAMES = 'input_1_o0'
+DEVICE = '520'
+CLASSES = 80
+CHANNELS = 3
+WIDTH = 416
+HEIGHT = 416
+```
 
 ### 3.1 Model Conversion
 
