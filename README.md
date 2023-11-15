@@ -564,13 +564,13 @@ After exit our own `Docker`, the copied Model, `models_520.nef`, can be found in
 
 First, we have to plug the `KL520` dongle into the `Notebook` USB port; then follow the steps below:
 
-### 4.1 Replace The Model in `kneron_plus` related Path. 
+### 4.1 Update The Model
 
 ```
 cd C:\msys64\home\kneron_plus\res\models\KL520\tiny_yolo_v3
 ```
 
-### 4.2 Run the `kl520_demo_cam_generic_image_inference_drop_frame`
+### 4.2 Run the given Example Routine
 
 ```
 cd C:\msys64\home\kneron_plus\build\bin
