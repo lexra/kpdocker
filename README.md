@@ -173,7 +173,7 @@ python compile.py
 
 ## 3. Workflow
 
-### Model Conversion
+### 3.1 Model Conversion
 
 Convert yolov3 weights to Keras h5. 
 
