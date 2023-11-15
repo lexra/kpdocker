@@ -36,9 +36,33 @@ curl https://registry.hub.docker.com/v2/repositories/kneron/toolchain/tags | yq 
     name: base-20220526
 ```
 
+Here we choose `v0.23.0` instead of `latest` .
+
 ### 1.2 Pull the docker image and login to the docker
 
 ```bash
-docker pull kneron/toolchain:v0.23.1
-docker run --rm -it -v /mnt/kpdocker:/docker_mount kneron/toolchain:v0.23.1
+docker pull kneron/toolchain:v0.23.0
+docker run --rm -it -v /mnt/kpdocker:/docker_mount kneron/toolchain:v0.23.0
 ```
+
+### 1.3 Build our own docker image
+
+### 1.3.1 Dockerfile
+
+```bash
+FROM kneron/toolchain:v0.23.0
+RUN apt update
+RUN apt install -y vim p7zip-full p7zip-rar iputils-ping net-tools udhcpc cython rar libsqlite3-dev
+RUN apt install -y dirmngr --install-recommends
+RUN /workspace/miniconda/bin/pip install gdown
+```
+### 1.3.2 Docker build login to the docker
+
+```
+DOCKER_MOUNT=/mnt/kpdocker
+docker build -t="kneron/toolchain:vim" .
+docker run --rm -it -v ${DOCKER_MOUNT}:/docker_mount kneron/toolchain:vim
+```
+
+
+
