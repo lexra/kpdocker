@@ -171,6 +171,16 @@ cd examples/freihand2d
 python compile.py
 ```
 
+## 3. Workflow
+
+### Model Conversion
+
+Convert yolov3 weights to Keras h5. 
+
+```bash
+/workspace/miniconda/bin/python /data1/keras_yolo3/convert.py yolov3-tiny.cfg yolov3-tiny.weights yolov3-tiny.h5
+```
+
 
 
 
