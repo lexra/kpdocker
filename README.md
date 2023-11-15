@@ -591,6 +591,8 @@ C:\msys64\home\kneron_plus\build\bin>kl520_demo_cam_generic_image_inference_drop
 
 #### 6. Why we set const `IMPUT_NAMES` to `'input_1_o0'` ? How the given `'input_1_o0'` to be determined? 
 
+#### 7. About `input_image = Image.open('000000350003.jpg')`, could we use a png file instead? 
+
 
 
 
