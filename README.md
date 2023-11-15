@@ -98,9 +98,9 @@ RUN cd examples/darknet && /workspace/miniconda/bin/python /data1/keras_yolo3/co
 
 ```bash
 ...
- => exporting layers                                                                                                                                                                                                                 0.0s
- => writing image sha256:35e3c0feaa4c776b7f780fc62c17dbb8395d3697080ee10d9c0a35ff8e4ff269                                                                                                                                            0.0s
- => naming to docker.io/kneron/toolchain:vim                                                                                                                                                                                         0.0s
+ => exporting layers
+ => writing image sha256:35e3c0feaa4c776b7f780fc62c17dbb8395d3697080ee10d9c0a35ff8e4ff269
+ => naming to docker.io/kneron/toolchain:vim
 (base) root@3afddac34919:/workspace#
 ```
 
