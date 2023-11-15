@@ -329,6 +329,28 @@ print(det_res)
 [233.60538,218.18251,306.83316,381.80396]],dtype=float32),array([0.9251516,0.787214],dtype=float32),array([2,7],dtype=int32))
 ```
 
+### 3.7 Fix Point Analysis
+
+#### 3.7.1 Normalize All Images from a List of Test Pictures
+
+```python
+print('')
+img_list = []
+with open ('test_image10.txt', "r") as myfile:
+    lines = myfile.read().splitlines()
+for item in lines:
+    image = Image.open(item)
+    img_data = preprocess(image)
+    img_list.append(img_data)
+    image.close()
+```
+
+#### 3.7.1 Analysis
+
+```python
+bie_model_path = km.analysis({'input_1_o0': img_list}, output_dir='/data1/kneron_flow', threads=4, quantize_mode='default', datapath_range_method='percentage', fm_cut='deep_search', mode=1)
+print("\nFix point analysis done. Save bie model to '" + str(bie_model_path) + "'")
+```
 
 
 
