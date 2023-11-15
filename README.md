@@ -1,8 +1,8 @@
 # Kp docker 介紹
 
-## 1. Toolchain Docker Deployment
+## 1. Toolchain Docker 部署
 
-### 1.1 TAGS List
+### 1.1 TAGS 清單
 
 ```bash
 curl https://registry.hub.docker.com/v2/repositories/kneron/toolchain/tags | yq -p json -o yaml | grep ' name: '
