@@ -237,7 +237,7 @@ It's very important to check the given cfg, `yolov3-tiny.cfg`, precisely conform
 We provide function() to runtime update the necessary values into the workflow on 'classes', 'channels', 'width', 'height', from the given cfg; 
 hence it's not necessary to modify the workflow source code. 
 
-```
+```python
 def darknetKeyValue(cfg, key):
     with open(cfg, "r") as f:
         while True:
