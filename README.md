@@ -73,7 +73,7 @@ mkdir -p ${DOCKER_MOUNT}
 docker run --rm -it -v ${DOCKER_MOUNT}:/docker_mount kneron/toolchain:vim
 ```
 
-## 2. Examples Preparation
+## 2. Examples
 
 ### 2.1 Darknet Weights
 
