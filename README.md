@@ -579,7 +579,7 @@ cd C:\msys64\home\kneron_plus\build\bin
 ```
 
 ```
-C:\msys64\home\kneron_plus\build\bin>kl520_demo_cam_generic_image_inference_drop_frame.exe
+kl520_demo_cam_generic_image_inference_drop_frame
 ```
 
 # Quiz
