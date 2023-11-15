@@ -189,12 +189,12 @@ from yolo3.model import yolo_eval
 from yolo3.utils import letterbox_image
 ```
 
-### 3.2 Const Value that you have to Check
+### 3.2 Const Values to be checked
 
 ```python
 CWD = '/workspace/examples/darknet/'
 NAME = 'yolov3-tiny'
-In_Model_Preprocess = True
+IN_MODEL_PREPROCESS = True
 TEST_LIST = 'test_image10.txt'
 IMPUT_NAMES = 'input_1_o0'
 DEVICE = '520'
@@ -203,6 +203,12 @@ CHANNELS = 3
 WIDTH = 416
 HEIGHT = 416
 ```
+
+CWD: Acronym for `Current Working Directory`
+
+NAME: Darknet cfg file prefix
+
+TEST_LIST: Test pictures list
 
 ### 3.3 Model Conversion
 
