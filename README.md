@@ -242,7 +242,7 @@ onnx.save(m, 'yolov3-tiny.opt.onnx')
 ### 3.6 IP Evaluate (NPU Performance Simulation)
 
 ```python
-km = ktc.ModelConfig(32769, "0001", DEVICE, onnx_model=m)
+km = ktc.ModelConfig(32769, "0001", '520', onnx_model=m)
 eval_result = km.evaluate()
 ```
 
