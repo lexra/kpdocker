@@ -22,7 +22,7 @@ RUN /workspace/miniconda/bin/pip install gdown
 ###########################################################
 # cudnn
 ###########################################################
-#RUN systemctl set-default multi-user.target
+RUN systemctl set-default multi-user.target
 
 #RUN apt install -y nvidia-cuda-*
 #RUN wget https://developer.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda-repo-ubuntu1810-10-1-local-10.1.105-418.39_1.0-1_amd64.deb
