@@ -231,10 +231,11 @@ TEST_LIST: Test Pictures List
 
 TEST_PICTURE: One Picture for Test
 
-#### 3.2.1 Note
+#### 3.2.1 Notice
 
 It's very important to check the given cfg, `yolov3-tiny.cfg`, precisely conform to the given weights, `yolov3-tiny.weights`. 
-Hence we provide function() to runtime modify values, 'classes', 'channels', 'width', 'height', from the given cfg. 
+We provide function() to runtime the necessary values into the workflow on 'classes', 'channels', 'width', 'height', from the given cfg; 
+hence it's not necessary to modify the workflow source code. 
 
 ```
 def darknetKeyValue(cfg, key):
