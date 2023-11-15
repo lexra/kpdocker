@@ -1,14 +1,14 @@
 # Kp docker 介紹
 
-## 1. Toolchain Docker 部署
+## 1. Toolchain Docker Deployment
 
-### 1.1 TAGS 清單
+### 1.1 TAGS List
 
 ```bash
 curl https://registry.hub.docker.com/v2/repositories/kneron/toolchain/tags | yq -p json -o yaml | grep ' name: '
 ```
 
-```
+```bash
     name: latest
     name: v0.23.1
     name: "720"
@@ -34,4 +34,11 @@ curl https://registry.hub.docker.com/v2/repositories/kneron/toolchain/tags | yq 
     name: base-20220609
     name: base-20220602
     name: base-20220526
+```
+
+### 1.2 Pull the docker image and login to the docker
+
+```bash
+docker pull kneron/toolchain:v0.23.1
+docker run --rm -it -v /mnt/kpdocker:/docker_mount kneron/toolchain:v0.23.1
 ```
