@@ -28,9 +28,10 @@ def darknetKeyValue(cfg, key):
 ###########################################################
 CWD = '/workspace/examples/wheelchair/'
 NAME = 'wheelchair'
-In_Model_Preprocess = True
+IN_MODEL_PREPROCESS = True
 TEST_LIST = 'test.txt'
 IMPUT_NAMES = 'input_1_o0'
+TEST_PICTURE = 'push_wheelchair.jpg'
 
 DEVICE = '520'
 if len(sys.argv) > 1:
@@ -67,7 +68,7 @@ def preprocess(pil_img):
     np_data = np.array(boxed_image, dtype='float32')
     # change normalization method due to we add "pixel_modify" BN node at model's front
     #np_data /= 255.
-    if In_Model_Preprocess == True:
+    if IN_MODEL_PREPROCESS == True:
         np_data -= 128
     else: 
         np_data /= 255.
@@ -85,7 +86,7 @@ else:
 # add pixel modify node:
 #   1. scaling 1/255 for every channel due to original normalize method, 
 #   2. shift 0.5 to change input range from 0~255 to -128 to 127
-if In_Model_Preprocess == True:
+if IN_MODEL_PREPROCESS == True:
     ktc.onnx_optimizer.pixel_modify(m, [1/255,1/255,1/255], [0.5,0.5,0.5])
 
 # do onnx2onnx again to calculate "pixel_modify" BN node's output shape
@@ -102,14 +103,14 @@ eval_result = km.evaluate()
 print("\nNpu performance evaluation result:\n" + str(eval_result))
 
 ## onnx model check
-input_image = Image.open(CWD + 'push_wheelchair.jpg')
+input_image = Image.open(CWD + TEST_PICTURE)
 in_data = preprocess(input_image)
 input_image.close()
 out_data = ktc.kneron_inference([in_data], onnx_file=CWD + NAME + '.opt.onnx', input_names=[IMPUT_NAMES])
 if out_data is not None:
-    print('Section 3 E2E simulator finished.')
+    print('E2E simulator finished.')
 else:
-    print('Section 3 E2E simulator failed.')
+    print('E2E simulator failed.')
     exit(1)
 det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
@@ -131,7 +132,7 @@ bie_model_path = km.analysis({IMPUT_NAMES: img_list}, output_dir='/data1/kneron_
 print("\nFix point analysis done. Save bie model to '" + str(bie_model_path) + "'")
 
 # bie model check
-input_image = Image.open(CWD + 'push_wheelchair.jpg')
+input_image = Image.open(CWD + TEST_PICTURE)
 in_data = preprocess(input_image)
 input_image.close()
 out_data = ktc.kneron_inference([in_data], bie_file=bie_model_path, input_names=[IMPUT_NAMES], platform=int(DEVICE))
