@@ -370,6 +370,17 @@ input    input      ✓       ✓  21.352              ✓                 ✓  
 Fix point analysis done. Save bie model to '/data1/kneron_flow/input.kdp520.scaled.bie'
 ```
 
+### 3.7 Bie Model Check
+
+```python
+input_image = Image.open('000000350003.jpg')
+in_data = preprocess(input_image)
+input_image.close()
+out_data = ktc.kneron_inference([in_data], bie_file=bie_model_path, input_names=['input_1_o0'], platform=520)
+det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
+print(det_res)
+```
+
 
 
 
