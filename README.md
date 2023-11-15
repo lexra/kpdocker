@@ -94,7 +94,7 @@ RUN cd examples/darknet && /workspace/miniconda/bin/python /data1/keras_yolo3/co
     yolov3-tiny.cfg yolov3-tiny.weights yolov3-tiny.h5 && cd -
 ```
 
-#### 2.1.2 Login to Our Own Docker
+#### 2.1.2 Login to Our Own Docker and Compilation
 
 ```bash
 ...
@@ -103,16 +103,14 @@ RUN cd examples/darknet && /workspace/miniconda/bin/python /data1/keras_yolo3/co
  => naming to docker.io/kneron/toolchain:vim
 (base) root@3afddac34919:/workspace#
 ```
-
-#### 2.1.3 Compilation
-
 ```bash
 cd examples/darknet
 python compile.py 520
 ```
 
-
 ### 2.2 Wheelchair Weights
+
+#### 2.2.1 Dockerfile
 
 ```bash
 RUN mkdir -p examples/wheelchair
@@ -128,10 +126,27 @@ RUN cd examples/wheelchair && cat wheelchair.cfg | grep anchors | tail -1 | awk 
     > wheelchair.anchors && cd -
 RUN cd examples/wheelchair && /workspace/miniconda/bin/python /data1/keras_yolo3/convert.py \
     ./wheelchair.cfg ./wheelchair.weights ./wheelchair.h5 && cd -
-
 ```
 
+#### 2.2.2 Login to Our Own Docker and Compilation
+
+```bash
+...
+ => exporting layers
+ => writing image sha256:35e3c0feaa4c776b7f780fc62c17dbb8395d3697080ee10d9c0a35ff8e4ff269
+ => naming to docker.io/kneron/toolchain:vim
+(base) root@3afddac34919:/workspace#
+```
+```bash
+cd examples/wheelchair
+python compile.py 520
+```
+
+
+
 ### 2.3 Freihand2d Onnx
+
+#### 2.3.1 Dockerfile
 
 ```bash
 RUN rm -rfv /data1/voc_data50
@@ -140,6 +155,20 @@ COPY examples/freihand2d/latest_kneron_optimized.onnx examples/freihand2d
 COPY examples/freihand2d/compile.py examples/freihand2d
 RUN wget https://www.kneron.com/forum/uploads/112/SMZ3HLBK3DXJ.7z -O SMZ3HLBK3DXJ.7z && \
     7z x SMZ3HLBK3DXJ.7z -o/workspace/examples/freihand2d && rm -rfv SMZ3HLBK3DXJ.7z
+```
+
+#### 2.3.2 Login to Our Own Docker and Compilation
+
+```bash
+...
+ => exporting layers
+ => writing image sha256:35e3c0feaa4c776b7f780fc62c17dbb8395d3697080ee10d9c0a35ff8e4ff269
+ => naming to docker.io/kneron/toolchain:vim
+(base) root@3afddac34919:/workspace#
+```
+```bash
+cd examples/freihand2d
+python compile.py
 ```
 
 
