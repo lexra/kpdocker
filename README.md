@@ -42,10 +42,11 @@ Here we choose `v0.23.0` instead of `latest` .
 
 ```bash
 docker pull kneron/toolchain:v0.23.0
-docker run --rm -it -v /mnt/kpdocker:/docker_mount kneron/toolchain:v0.23.0
+mkdir -p /mnt/docker
+docker run --rm -it -v /mnt/docker:/docker_mount kneron/toolchain:v0.23.0
 ```
 
-### 1.3 Build our own docker image
+### 1.3 Use Our Own Docker Image
 
 ### 1.3.1 Prepare the Dockerfile
 
@@ -60,9 +61,7 @@ RUN /workspace/miniconda/bin/pip install gdown
 
 ```
 export DOCKER_MOUNT=/mnt/kpdocker
-
 docker build -t="kneron/toolchain:vim" .
-
 mkdir -p ${DOCKER_MOUNT}
 docker run --rm -it -v ${DOCKER_MOUNT}:/docker_mount kneron/toolchain:vim
 ```
