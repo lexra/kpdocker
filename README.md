@@ -226,7 +226,7 @@ Convert yolov3 weights to Keras h5.
 ### 3.4 Convert from Keras to Onnx
 
 ```python
-m = ktc.onnx_optimizer.keras2onnx_flow('yolov3-tiny.h5', optimize=0, input_shape=[1,WIDTH,HEIGHT,CHANNELS])
+m = ktc.onnx_optimizer.keras2onnx_flow('yolov3-tiny.h5', optimize=0, input_shape=[1,416,416,3])
 m = ktc.onnx_optimizer.onnx2onnx_flow(m)
 ```
 
@@ -307,9 +307,16 @@ gen fx model report: model_fx_report.html
 34, up_sampling2d_1, up_sampling2d_1, CPU, cpu_fusion_node_up_sampling2d_1,
 ```
 
+### 3.6 Onnx Model Check
 
-
-
+```python
+input_image = Image.open('000000350003.jpg')
+in_data = preprocess(input_image)
+input_image.close()
+out_data = ktc.kneron_inference([in_data], onnx_file=CWD + NAME + '.opt.onnx', input_names=['input_1_o0'])
+det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
+print(det_res)
+```
 
 
 
