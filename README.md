@@ -208,9 +208,11 @@ HEIGHT = 416
 
 CWD: Acronym for `Current Working Directory`
 
-NAME: Darknet cfg file prefix
+NAME: Darknet Cfg File Prefix
 
-TEST_LIST: Test pictures list
+TEST_LIST: Test Pictures List
+
+TEST_PICTURE: One Picture for Test
 
 ### 3.3 Model Conversion
 
