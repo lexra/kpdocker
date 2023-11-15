@@ -38,7 +38,7 @@ curl https://registry.hub.docker.com/v2/repositories/kneron/toolchain/tags | yq 
 
 Here we choose `v0.23.0` instead of `latest` .
 
-### 1.2 Pull the docker image and login to the docker
+### 1.2 Pull the Docker Image and login to the Docker
 
 ```bash
 docker pull kneron/toolchain:v0.23.0
@@ -57,7 +57,7 @@ RUN apt install -y vim p7zip-full p7zip-rar iputils-ping net-tools udhcpc cython
 RUN apt install -y dirmngr --install-recommends
 RUN /workspace/miniconda/bin/pip install gdown
 ```
-### 1.3.2 Docker build login to the docker
+### 1.3.2 Docker build login to Our Own Docker
 
 ```
 export DOCKER_MOUNT=/mnt/kpdocker
