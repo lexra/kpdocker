@@ -194,11 +194,9 @@ To keep the diagram as clear as possible, some details are omitted. But it is en
 
 Here we take the Yolo Example to break down the workflow. 
 
-The followings are Official Documents related for YOLOv3: 
+The followings are official documents related to YOLOv3: 
 * `YOLOv3 Step by Step`: https://doc.kneron.com/docs/#toolchain/appendix/yolo_example
 * `YOLOv3 with In-Model-Preprocess trick Step by Step`: https://doc.kneron.com/docs/#toolchain/appendix/yolo_example_InModelPreproc_trick
-
-
 
 ### 3.1 Import
 
