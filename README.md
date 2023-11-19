@@ -430,6 +430,38 @@ det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
 ```
 
+##### 3.7.2.1 Arguments to `ktc.kneron_inference()`
+
+There are only two items that you need to prepare to run the inference function. Everything else is optional.
+
+* preprocessed input: list of NumPy arrays in channel first (1, c, h, w) format. Before 0.21.0, this took in channel last format.
+* model file: depending on what kind of model you want to run, but it will be one of NEF, ONNX, and BIE file
+
+Inputs: 
+
+* pre_results: same as preprocessed input mentioned above
+* nef_file/onnx_file/bie_file: path to your input model file
+  * only one of these will be used, if they are all specified, priority is NEF -> ONNX -> BIE
+* model_id: ID of model to run inference
+  * only used with NEF file if file has multiple models
+* input_names: list of input node names
+  * only needed with ONNX/BIE file
+* data_type: string data format that you would like the output returned as
+  * float or fixed
+* reordering: list of node names/integers specifying the output order
+  * integers for NEF file without ioinfo_file, node names with ioinfo_file
+  * node names for ONNX and BIE file
+* ioinfo_file: string path to file mapping output node number to name
+  * only used with NEF file
+* dump: flag to dump intermediate nodes
+* platform: integer platform to be used
+  * used with NEF file to prepare CSIM input
+  * used with BIE file to indicate Dynasty fixed model version
+  * 520, 530, 630, 720, 730
+* platform_version: indicates version for a specific platform
+
+Returns: List[npt.ArrayLike]
+
 #### 3.7.3 E2E simulator Inference Result
 
 ```bash
