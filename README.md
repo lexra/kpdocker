@@ -453,7 +453,7 @@ input    input      ✓       ✓  21.352              ✓                 ✓  
 Fix point analysis done. Save bie model to '/data1/kneron_flow/input.kdp520.scaled.bie'
 ```
 
-### 3.9 Bie Model Check
+### 3.9 Fixed-Point Model Inference (Bie Model Check)
 
 #### 3.9.1 Bie Model Generation
 
