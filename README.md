@@ -412,7 +412,7 @@ print(det_res)
 [233.60538,218.18251,306.83316,381.80396]],dtype=float32),array([0.9251516,0.787214],dtype=float32),array([2,7],dtype=int32))
 ```
 
-### 3.8 Fix Point Analysis
+### 3.8 Quantization (Fix Point Analysis)
 
 #### 3.8.1 Normalize All Images from a List of Test Pictures
 
