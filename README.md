@@ -462,7 +462,6 @@ print("\nFix point analysis done. Save bie model to '" + str(bie_model_path) + "
 ```bash
  Success for model "input/input" when running "general/Success"
 
-
 ===========================================
 =            report on flow status        =
 ===========================================
@@ -473,15 +472,10 @@ category case
 input    input      ✓       ✓  21.352              ✓                 ✓                ✓            ✓      N/A                21633                  21773                     140       ✓             33
 
 
-
-
 Fix point analysis done. Save bie model to '/data1/kneron_flow/input.kdp520.scaled.bie'
 ```
 
-def analysis(self, input_mapping: Dict, output_dir: str = "/data1/kneron_flow", threads: int = 4, quantize_mode: str = "default", 
-        datapath_range_method: str = "percentage", percentage: float = 0.999, percentile: float = 0.001,
-        outlier_factor: float = 1.0, datapath_bitwidth_mode="int8", weight_bitwidth_mode="int8", model_in_bitwidth_mode="int8",
-        model_out_bitwidth_mode="int8", fm_cut="default", mode: int = 1, optimize: int = 0, export_dynasty_dump: bool = False) -> str:
+#### 3.8.2.1 Arguments to `km.analysis()`
 
 * input_mapping (Dict): Dictionary of mapping input data to a specific input. Input data should be a list of numpy array.
 * output_dir (str, optional): path to the output directory. Defaults to /data1/kneron_flow.
@@ -506,7 +500,6 @@ def analysis(self, input_mapping: Dict, output_dir: str = "/data1/kneron_flow", 
 * export_dynasty_dump (bool, optional): whether export the dump result when running dynasty. Defaults to False.
 
 Returns: path to the output bie file. 
-
 
 ### 3.9 Fixed-Point Model Inference (Bie Model Check)
 
