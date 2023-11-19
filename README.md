@@ -656,11 +656,29 @@ Q: The official documentation didn't invoke `ktc.convert_channel_last_to_first()
 
 A: If we skip `ktc.convert_channel_last_to_first()`, the following error occurs: 
 
-```
+```bash
 AssertionError:
         Input node (input_1_o0) has shape ((1, 3, 416, 416)),
         but the numpy list has different shapes of: [(416, 416, 3)].
         Please check the numpy input.
+```
+
+Example:
+
+```python
+import ktc
+from PIL import Image
+import numpy as np
+
+image = Image.open("/workspace/examples/mobilenetv2/images/000007.jpg")
+image = image.convert("RGB")
+# Here the image is in channel last format, which is (224, 224, 3)
+img_data = np.array(image.resize((224, 224), Image.BILINEAR)) / 255
+ASSERT img_data.shape == (224, 224, 3)
+
+# Now we use the API to convert the image into channel first format, which is (1, 3, 224, 224)
+new_img_data = ktc.convert_channel_last_to_first(img_data)
+ASSERT new_img_data.shape == (1, 3, 224, 224)
 ```
 
 Q: Could anybody explain what is `freihand2d`?
