@@ -317,22 +317,46 @@ km = ktc.ModelConfig(32769, "0001", '520', onnx_model=m, onnx_path=None, debug=F
 eval_result = km.evaluate()
 ```
 
-Arguments List to `ktc.ModelConfig()`:
 
-```python
-        """Create an Kneron model config object. One of these three parameters is required: onnx_model, onnx_path, bie_path.
-        Args:
-            id (int): model ID
-            version (str): version number which should be a four digit hex, e.g. "0a2f"
-            platform (str): hardware platform, should be "520" or "720"
-            onnx_model (ModelProto, optional): loaded onnx model. Defaults to None.
-            onnx_path (str, optional): onnx file path. Defaults to None.
-            bie_path (str, optional): bie file path. Defaults to None.
-            radix_json_path (str, optional): radix json path. Defaults to None.
-            compiler_config_path (str, optional): compiler config json path. Defaults to None.
-            debug (bool, optional): debug mode. Defaults to False.
-        """
-```
+def ModelConfig(id: int, version: str, platform: str, onnx_model=None, onnx_path=None, bie_path=None, radix_json_path=None, compiler_config_path=None, debug=False) -> None:
+* id (int): model ID
+* version (str): version number which should be a four digit hex, e.g. "0a2f"
+* platform (str): hardware platform, should be "520" or "720"
+* onnx_model (ModelProto, optional): loaded onnx model. Defaults to None.
+* onnx_path (str, optional): onnx file path. Defaults to None.
+* bie_path (str, optional): bie file path. Defaults to None. One of these three parameters is required: onnx_model, onnx_path, bie_path
+* radix_json_path (str, optional): radix json path. Defaults to None.
+* compiler_config_path (str, optional): compiler config json path. Defaults to None.
+* debug (bool, optional): debug mode. Defaults to False.
+
+def analysis(self, input_mapping: Dict, output_dir: str = "/data1/kneron_flow", threads: int = 4, quantize_mode: str = "default", 
+        datapath_range_method: str = "percentage", percentage: float = 0.999, percentile: float = 0.001,
+        outlier_factor: float = 1.0, datapath_bitwidth_mode="int8", weight_bitwidth_mode="int8", model_in_bitwidth_mode="int8",
+        model_out_bitwidth_mode="int8", fm_cut="default", mode: int = 1, optimize: int = 0, export_dynasty_dump: bool = False) -> str:
+
+* input_mapping (Dict): Dictionary of mapping input data to a specific input. Input data should be a list of numpy array.
+* output_dir (str, optional): path to the output directory. Defaults to /data1/kneron_flow.
+* threads (int, optional): multithread setting. Defaults to 4.
+* quantize_mode (str, optional): quantize_mode setting. Currently support default and post_sigmoid. Defaults to "default".
+* datapath_range_method (str, optional): could be 'mmse' or 'percentage. mmse: use snr-based-range method. percentage: use arbitary percentage. Default to 'percentage'.
+* percentage (float, optional): used under 'percentage' mode. Suggest to set value between 0.999 and 1.0. Use 1.0 for detection models. Defaults to 0.999.
+* percentile (float, optional): used under 'mmse' mode. The range to search. The larger the value, the larger the search range, the better the performance but the longer the simulation time. Defaults to 0.001,
+* outlier_factor (float, optional): used under 'mmse' mode. The factor applied on outliers. For example, if clamping data is sensitive to your model, set outlier_factor to 2 or higher. Higher outlier_factor will reduce outlier removal by increasing range. Defaults to 1.0.
+* datapath_bitwidth_mode: choose from "int8"/"int16". ("int16" not supported in kdp520).
+* weight_bitwidth_mode: choose from "int8"/"int16". ("int16" not supported in kdp520).
+* model_in_bitwidth_mode: choose from "int8"/"int16". ("int16" only for internal debug usage).
+* model_out_bitwidth_mode: choose from "int8"/"int16". (currently should be same as model_in_bitwidth_mode).
+* fm_cut (str, optional): could be "default" or "deep_search". Deep search mode optimizes the performance but takes longer. Defaults to "default".
+* mode (int, optional): running mode for the analysis.
+  * 0: run ip_evaluator only.
+  * 1: run knerex (for quantization) only.
+  * 2: run knerex + dynasty + compiler + csim + bit-true-match check. dynasty will inference only 1 image and only check quantization accuracy of output layers.
+  * 3: run knerex + dynasty + compiler + csim + bit-true-match check. dynasty will inference all images and dump results of all layers. It will provide most detailed analysis but will take much longer time.
+* Defaults to 1.
+* optimize (int, optional): level of optimization. 0-2, the larger number, the better model performance, but takes longer. Defaults to 0.
+* export_dynasty_dump (bool, optional): whether export the dump result when running dynasty. Defaults to False.
+
+Returns: path to the output bie file. 
 
 #### 3.6.3 NPU Performance Simulation Report
 
