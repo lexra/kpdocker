@@ -601,8 +601,6 @@ print(det_res)
 ```bash
 (base) root@48b04a35dc1a:/workspace/examples/darknet# \
     cp -fv /data1/kneron_flow/models_520.nef /docker_mount
-
-'/data1/kneron_flow/models_520.nef' -> '/docker_mount/models_520.nef'
 ```
 
 After exit our own `Docker`, the copied Model, `models_520.nef`, can be found in `/mnt/kpdocker` . 
