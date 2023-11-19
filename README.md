@@ -654,6 +654,15 @@ Q: About `Workflow for Yolo Example` described above, is there any step that we 
 
 Q: The official documentation didn't invoke `ktc.convert_channel_last_to_first()` in `preprocess()`, Why we invoke `ktc.convert_channel_last_to_first()` before `preprocess()` returns? 
 
+A: If we skip `ktc.convert_channel_last_to_first()`, the following error occurs: 
+
+```
+AssertionError:
+        Input node (input_1_o0) has shape ((1, 3, 416, 416)),
+        but the numpy list has different shapes of: [(416, 416, 3)].
+        Please check the numpy input.
+```
+
 Q: Could anybody explain what is `freihand2d`?
 
 
