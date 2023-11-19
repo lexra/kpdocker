@@ -319,15 +319,15 @@ eval_result = km.evaluate()
 
 ##### 3.6.2.1 Arguments to `ktc.ModelConfig()`
 
-* id (int): model ID
-* version (str): version number which should be a four digit hex, e.g. "0a2f"
-* platform (str): hardware platform, should be "520" or "720"
-* onnx_model (ModelProto, optional): loaded onnx model. Defaults to None.
-* onnx_path (str, optional): onnx file path. Defaults to None.
-* bie_path (str, optional): bie file path. Defaults to None. One of these three parameters is required: onnx_model, onnx_path, bie_path
-* radix_json_path (str, optional): radix json path. Defaults to None.
-* compiler_config_path (str, optional): compiler config json path. Defaults to None.
-* debug (bool, optional): debug mode. Defaults to False.
+* `id (int)`: model ID
+* `version (str)`: version number which should be a four digit hex, e.g. "0a2f"
+* `platform (str)`: hardware platform, should be "520" or "720"
+* `onnx_model (ModelProto, optional)`: loaded onnx model. Defaults to None.
+* `onnx_path (str, optional)`: onnx file path. Defaults to None.
+* `bie_path (str, optional)`: bie file path. Defaults to None. One of these three parameters is required: onnx_model, onnx_path, bie_path
+* `radix_json_path (str, optional)`: radix json path. Defaults to None.
+* `compiler_config_path (str, optional)`: compiler config json path. Defaults to None.
+* `debug (bool, optional)`: debug mode. Defaults to False.
 
 #### 3.6.3 NPU Performance Simulation Report
 
