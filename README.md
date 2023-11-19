@@ -277,11 +277,11 @@ m = ktc.onnx_optimizer.keras2onnx_flow(keras_model_path='yolov3-tiny.h5', optimi
 m = ktc.onnx_optimizer.onnx2onnx_flow(m)
 ```
 
-def keras2onnx_flow(keras_model_path: str, optimize: int=0, input_shape: List=None) :
+#### 3.4.1 def keras2onnx_flow(keras_model_path: str, optimize: int=0, input_shape: List=None) :
 * keras_model_path (str): the input hdf5/h5 model path.
 * optimize (int, optional): optimization level. Defaults to 0.
 * input_shape (List, optional): change the input shape if set. Only single input model is supported. Defaults to None.
-* Returns: the converted onnx.
+Returns: the converted onnx.
 
 
 ### 3.5 Model Optimization (Onnx Optimization)
