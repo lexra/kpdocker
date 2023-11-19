@@ -185,7 +185,7 @@ python compile.py
 In the following parts of this page, you can go through the basic toolchain working process to get familiar with the toolchain.
 Below is a breif diagram showing the workflow of how to generate the binary from a floating-point model using the toolchain.
 
-<img src=https://doc.kneron.com/docs/toolchain/imgs/manual/Manual_Flow_Chart.png />
+<img src=https://doc.kneron.com/docs/toolchain/imgs/manual/Manual_Flow_Chart.png width=480 />
 
 To keep the diagram as clear as possible, some details are omitted. But it is enough to show the general structure. There are three main sections:
 * Floating-point model preparation. Convert the model from different platforms to onnx and optimize the onnx file. Evaluate the onnx the model to check the operator support and the estimate performance. Then, test the onnx model and compare the result with the source.
