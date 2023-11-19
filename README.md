@@ -373,7 +373,7 @@ gen fx model report: model_fx_report.html
 
 Refer to the official document, <a href=https://doc.kneron.com/docs/#toolchain/appendix/operators>Operator</a> .
 
-### 3.7 Onnx Model Check
+### 3.7 Floating-Point Model Inference (Onnx Model Check)
 
 #### 3.7.1 Postprocess
 
