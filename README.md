@@ -681,9 +681,6 @@ new_img_data = ktc.convert_channel_last_to_first(img_data)
 ASSERT new_img_data.shape == (1, 3, 224, 224)
 ```
 
-Q: Could anybody explain what is `freihand2d`?
-
-
 
 
 
