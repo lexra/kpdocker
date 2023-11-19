@@ -460,7 +460,9 @@ Inputs:
   * 520, 530, 630, 720, 730
 * `platform_version`: indicates version for a specific platform
 
-Returns: List[npt.ArrayLike]
+Output
+
+Output will be a list of NumPy arrays in ONNX shape format. It will be in the order specified by reordering; if reordering is not speicifed, it will be in default order provided by the model.
 
 #### 3.7.3 E2E simulator Inference Result
 
