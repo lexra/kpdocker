@@ -652,7 +652,7 @@ Q: About `input_image = Image.open('000000350003.jpg')`, could we use a png file
 
 Q: About `Workflow for Yolo Example` described above, is there any step that we could skip? If the answer is `possitive`, which step?
 
-Q: The official documentation didn't invoke `ktc.convert_channel_last_to_first()` in `preprocess()`, Why we invoke `ktc.convert_channel_last_to_first()` before `preprocess()` returns? 
+##### Q: The official documentation didn't invoke `ktc.convert_channel_last_to_first()` in `preprocess()`, Why we invoke `ktc.convert_channel_last_to_first()` before `preprocess()` returns? 
 
 A: If we skip `ktc.convert_channel_last_to_first()`, the following error occurs: 
 
