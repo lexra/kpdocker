@@ -317,7 +317,8 @@ km = ktc.ModelConfig(32769, "0001", '520', onnx_model=m, onnx_path=None, debug=F
 eval_result = km.evaluate()
 ```
 
-def ModelConfig(id: int, version: str, platform: str, onnx_model=None, onnx_path=None, bie_path=None, radix_json_path=None, compiler_config_path=None, debug=False) -> None:
+##### 3.6.2.1 Arguments to `ktc.ModelConfig()`
+
 * id (int): model ID
 * version (str): version number which should be a four digit hex, e.g. "0a2f"
 * platform (str): hardware platform, should be "520" or "720"
