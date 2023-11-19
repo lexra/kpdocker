@@ -288,7 +288,7 @@ Returns: the converted onnx.
 ### 3.5 Model Optimization (Onnx Optimization)
 
 ```python
-# m = ktc.onnx_optimizer.onnx2onnx_flow(m)
+m = ktc.onnx_optimizer.onnx2onnx_flow(m)
 onnx.save(m, 'yolov3-tiny.opt.onnx')
 ```
 
