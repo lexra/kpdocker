@@ -146,9 +146,6 @@ cd examples/wheelchair
 python compile.py 520
 ```
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/4eYeoeOMUE0/0.jpg)](https://www.youtube.com/watch?v=4eYeoeOMUE0)
-
-
 ### 2.3 Freihand2d Onnx
 
 #### 2.3.1 Dockerfile
