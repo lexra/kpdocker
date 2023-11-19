@@ -313,8 +313,25 @@ def preprocess(pil_img):
 #### 3.6.2 Floating-Point Model Inference (NPU Performance Simulation)
 
 ```python
-km = ktc.ModelConfig(32769, "0001", '520', onnx_model=m)
+km = ktc.ModelConfig(32769, "0001", '520', onnx_model=m, onnx_path=None, debug=False)
 eval_result = km.evaluate()
+```
+
+Arguments List:
+
+```python
+        """Create an Kneron model config object. One of these three parameters is required: onnx_model, onnx_path, bie_path.
+        Args:
+            id (int): model ID
+            version (str): version number which should be a four digit hex, e.g. "0a2f"
+            platform (str): hardware platform, should be "520" or "720"
+            onnx_model (ModelProto, optional): loaded onnx model. Defaults to None.
+            onnx_path (str, optional): onnx file path. Defaults to None.
+            bie_path (str, optional): bie file path. Defaults to None.
+            radix_json_path (str, optional): radix json path. Defaults to None.
+            compiler_config_path (str, optional): compiler config json path. Defaults to None.
+            debug (bool, optional): debug mode. Defaults to False.
+        """
 ```
 
 #### 3.6.3 NPU Performance Simulation Report
