@@ -674,7 +674,11 @@ print(det_res)
 [234.3568,210.12952,307.17825,389.8782]],dtype=float32),array([0.89978975,0.760541],dtype=float32),array([2,7],dtype=int32))
 ```
 
-### 3.12 Copy the Compiled Model from Docker
+## 4. Deployment
+
+First, we have to plug the `KL520` dongle into the `Notebook` USB port. 
+
+### 4.1 Copy the Compiled Model from Docker
 
 ```bash
 (base) root@48b04a35dc1a:/workspace/examples/darknet# \
@@ -683,17 +687,13 @@ print(det_res)
 
 After exit our own `Docker`, the copied Model, `models_520.nef`, can be found in `/mnt/kpdocker` . 
 
-## 4. Deployment
-
-First, we have to plug the `KL520` dongle into the `Notebook` USB port; then follow the steps below:
-
-### 4.1 Update The Model
+### 4.2 Update The Model
 
 ```
 cd C:\msys64\home\kneron_plus\res\models\KL520\tiny_yolo_v3
 ```
 
-### 4.2 Run the given Example Routine
+### 4.3 Run the given Example Routine
 
 ```
 cd C:\msys64\home\kneron_plus\build\bin
