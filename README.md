@@ -261,7 +261,7 @@ WIDTH = int(darknetKeyValue(cfg = CWD + NAME + '.cfg', key = 'width'))
 HEIGHT = int(darknetKeyValue(key = 'height', cfg = CWD + NAME + '.cfg'))
 ```
 
-### 3.3 Floating-Point Model Preparation (Model Conversion)
+### 3.3 Floating-Point Model Preparation
 
 Convert yolov3 weights to Keras h5. 
 
