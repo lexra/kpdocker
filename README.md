@@ -317,7 +317,7 @@ km = ktc.ModelConfig(32769, "0001", '520', onnx_model=m, onnx_path=None, debug=F
 eval_result = km.evaluate()
 ```
 
-Arguments List:
+Arguments List to `ktc.ModelConfig()`:
 
 ```python
         """Create an Kneron model config object. One of these three parameters is required: onnx_model, onnx_path, bie_path.
