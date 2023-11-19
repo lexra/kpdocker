@@ -281,6 +281,8 @@ def keras2onnx_flow(keras_model_path: str, optimize: int=0, input_shape: List=No
 * keras_model_path (str): the input hdf5/h5 model path.
 * optimize (int, optional): optimization level. Defaults to 0.
 * input_shape (List, optional): change the input shape if set. Only single input model is supported. Defaults to None.
+* Returns: the converted onnx.
+
 
 ### 3.5 Model Optimization (Onnx Optimization)
 
