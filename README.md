@@ -281,6 +281,7 @@ m = ktc.onnx_optimizer.onnx2onnx_flow(m)
 * keras_model_path (str): the input hdf5/h5 model path.
 * optimize (int, optional): optimization level. Defaults to 0.
 * input_shape (List, optional): change the input shape if set. Only single input model is supported. Defaults to None.
+
 Returns: the converted onnx.
 
 
