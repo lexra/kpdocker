@@ -293,7 +293,7 @@ m = ktc.onnx_optimizer.onnx2onnx_flow(m)
 onnx.save(m, 'yolov3-tiny.opt.onnx')
 ```
 
-### 3.6 Model Evaluation (IP Evaluate)
+### 3.6 Model Evaluation (IP Evaluation)
 
 #### 3.6.1 Preprocess() Function
 
