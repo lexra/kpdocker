@@ -182,11 +182,23 @@ python compile.py
 
 ## 3. Workflow for YOLOv3 Example
 
+In the following parts of this page, you can go through the basic toolchain working process to get familiar with the toolchain.
+Below is a breif diagram showing the workflow of how to generate the binary from a floating-point model using the toolchain.
+
+<img src=https://doc.kneron.com/docs/toolchain/imgs/manual/Manual_Flow_Chart.png />
+
+To keep the diagram as clear as possible, some details are omitted. But it is enough to show the general structure. There are three main sections:
+* Floating-point model preparation. Convert the model from different platforms to onnx and optimize the onnx file. Evaluate the onnx the model to check the operator support and the estimate performance. Then, test the onnx model and compare the result with the source.
+* Fixed-point model generation. Quantize the floating-point model and generate bie file. Test the bie file and compare the result with the previous step.
+* Compilation. Batch compile multiple bie models into a nef format binary file. Test the nef file and compare the result with the previous step.
+
 Here we take the Yolo Example to break down the workflow. 
 
 The followings are Official Documents related for YOLOv3: 
 * `YOLOv3 Step by Step`: https://doc.kneron.com/docs/#toolchain/appendix/yolo_example
 * `YOLOv3 with In-Model-Preprocess trick Step by Step`: https://doc.kneron.com/docs/#toolchain/appendix/yolo_example_InModelPreproc_trick
+
+
 
 ### 3.1 Import
 
