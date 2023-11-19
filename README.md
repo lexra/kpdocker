@@ -273,14 +273,14 @@ m = ktc.onnx_optimizer.keras2onnx_flow('yolov3-tiny.h5', optimize=0, input_shape
 m = ktc.onnx_optimizer.onnx2onnx_flow(m)
 ```
 
-### 3.5 Onnx Optimization
+### 3.5 Model Optimization (Onnx Optimization)
 
 ```python
 m = ktc.onnx_optimizer.onnx2onnx_flow(m)
 onnx.save(m, 'yolov3-tiny.opt.onnx')
 ```
 
-### 3.6 IP Evaluate
+### 3.6 Model Evaluation (IP Evaluate)
 
 #### 3.6.1 Preprocess() Function
 
@@ -297,7 +297,7 @@ def preprocess(pil_img):
     return np_data
 ```
 
-#### 3.6.2 NPU Performance Simulation
+#### 3.6.2 Floating-Point Model Inference (NPU Performance Simulation)
 
 ```python
 km = ktc.ModelConfig(32769, "0001", '520', onnx_model=m)
