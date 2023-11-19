@@ -480,9 +480,9 @@ It's very important to note that 2 types of the given `520` passed to ktc.kneron
 [234.3568,210.12952,307.17825,389.8782]],dtype=float32),array([0.89978975,0.760541],dtype=float32),array([2,7],dtype=int32))
 ```
 
-### 3.10 Compile
+### 3.10 Compilation
 
-#### 3.10.1 Compile
+#### 3.10.1 Batch Compile
 
 ```python
 nef_model_path = ktc.compile([km])
@@ -572,7 +572,7 @@ info:
 Compile done. Save Nef file to '/data1/kneron_flow/models_520.nef'
 ```
 
-### 3.11 Knef Model Ckeck
+### 3.11 Hardware Simulation (Knef Model Ckeck)
 
 #### 3.11.1 Knef Model Inference
 
