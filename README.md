@@ -174,9 +174,6 @@ cd examples/freihand2d
 python compile.py
 ```
 
-![image](https://github.com/lexra/kpdocker/assets/33512027/20d8555f-7d39-4588-9105-e9fef8fcefba)
-
-
 ## 3. Workflow for YOLOv3 Example
 
 In the following parts of this page, you can go through the basic toolchain working process to get familiar with the toolchain.
