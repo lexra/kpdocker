@@ -698,6 +698,29 @@ kl520_demo_cam_generic_image_inference_drop_frame
 # Quiz
 
 #### Q: Why choose `v0.23.0` instead of `latest`? 
+A: We found the `AssertionError` happened for the given version, `v0.23.0`, which we display below: 
+
+```bash
+ Failure for model "input/input" when running "kdp520/compiler frontend"
+
+===========================================
+=            report on flow status        =
+===========================================
+
+                          kdp520                     general
+               compiler frontend compiler_cfg onnx size (MB)
+category case
+input    input                 x            ✓             33
+
+Traceback (most recent call last):
+  File "compile.py", line 131, in <module>
+    bie_model_path = km.analysis({IMPUT_NAMES: img_list}, output_dir='/data1/kneron_flow', threads=4, quantize_mode='default', datapath_range_method='percentage', fm_cut='deep_search', mode=1)
+  File "/workspace/miniconda/lib/python3.7/site-packages/ktc/toolchain.py", line 166, in analysis
+    export_dynasty_dump=export_dynasty_dump,
+  File "/workspace/miniconda/lib/python3.7/site-packages/sys_flow/run.py", line 867, in gen_fx_model
+    assert success, "Quantization model generation failed. See above message for details."
+AssertionError: Quantization model generation failed. See above message for details.
+```
 
 #### Q: While coding python, can we use <TAB> to replace the leading space? 
 A: Negative. 
