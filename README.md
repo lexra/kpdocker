@@ -702,7 +702,9 @@ Q: Why choose `v0.23.0` instead of `latest`?
 #### Q: While coding python, can we use <TAB> to replace the leading space? 
 A: Negative. 
 
-Q: How to Convert YOLOv3 weights to Keres one? 
+#### Q: How to Convert YOLOv3 weights to Keres one? 
+
+A: Take the following step: 
 
 ```bash
 /workspace/miniconda/bin/python /data1/keras_yolo3/convert.py `yolov3-tiny.cfg` `yolov3-tiny.weights` yolov3-tiny.h5
