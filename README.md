@@ -720,7 +720,8 @@ A: It's available to use the `Netron` app as the graph tool for the given ONNX m
 ![image](https://github.com/lexra/kpdocker/assets/33512027/ea6a46c9-b68b-42e5-8c58-4406d32e4d81)
 
 
-Q: About `input_image = Image.open('000000350003.jpg')`, could we use a png file instead? 
+#### Q: About `input_image = Image.open('000000350003.jpg')`, could we use a png file instead? 
+A: Possitive. 
 
 Q: About `Workflow for Yolo Example` described above, is there any step that we could skip? If the answer is `possitive`, which step?
 
