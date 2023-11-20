@@ -707,7 +707,11 @@ Q: While invoking a python function with a list of parameters, could we change t
 
 Q: Could we use ${PYTHONPATH} to replece `sys.path.append(str(pathlib.Path("/data1/keras_yolo3").resolve()))` described above?
 
-Q: Why we set const `IMPUT_NAMES` to `'input_1_o0'` ? How the given `'input_1_o0'` to be determined? 
+#### Q: Why we set const `IMPUT_NAMES` to `'input_1_o0'` ? How the given `'input_1_o0'` to be determined? 
+A: Use `Netron` as the graph tool for the given ONNX model to check the model `INPUTS` name: 
+
+![image](https://github.com/lexra/kpdocker/assets/33512027/ea6a46c9-b68b-42e5-8c58-4406d32e4d81)
+
 
 Q: About `input_image = Image.open('000000350003.jpg')`, could we use a png file instead? 
 
