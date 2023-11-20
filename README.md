@@ -100,6 +100,10 @@ RUN cd examples/darknet && /workspace/miniconda/bin/python /data1/keras_yolo3/co
 #### 2.1.2 Login to Our Own Docker and Compilation
 
 ```bash
+docker run --rm -it -v /mnt/kpdocker:/docker_mount kneron/toolchain:vim
+```
+
+```bash
 ...
  => exporting layers
  => writing image sha256:35e3c0feaa4c776b7f780fc62c17dbb8395d3697080ee10d9c0a35ff8e4ff269
