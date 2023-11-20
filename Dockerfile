@@ -24,6 +24,10 @@ RUN /workspace/miniconda/bin/pip install gdown
 ###########################################################
 RUN systemctl set-default multi-user.target
 
+#RUN apt install -y dconf-editor
+#RUN gsettings set org.gnome.desktop.media-handling automount false
+#RUN gsettings set org.gnome.desktop.media-handling automount-open false
+
 #RUN apt install -y nvidia-cuda-*
 #RUN wget https://developer.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda-repo-ubuntu1810-10-1-local-10.1.105-418.39_1.0-1_amd64.deb
 #RUN dpkg -i cuda-repo-ubuntu1810-10-1-local-10.1.105-418.39_1.0-1_amd64.deb
