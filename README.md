@@ -698,7 +698,7 @@ kl520_demo_cam_generic_image_inference_drop_frame
 # Quiz
 
 #### Q: Why choose `v0.23.0` instead of `latest`? 
-A: We found the `AssertionError` happened for the given version, `v0.23.0`, which we display below: 
+A: Since we found the `AssertionError` happened for the given version, `v0.23.1`, which we display below: 
 
 ```bash
  Failure for model "input/input" when running "kdp520/compiler frontend"
