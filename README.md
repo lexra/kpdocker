@@ -710,9 +710,11 @@ A: Take the following step:
 python /data1/keras_yolo3/convert.py `yolov3-tiny.cfg` `yolov3-tiny.weights` yolov3-tiny.h5
 ```
 
-Q: While invoking a python function with a list of parameters, could we change the order of the given list? 
+#### Q: While invoking a python function with a list of parameters, could we change the order of the given list? 
+A: Yes, possitive. 
 
-Q: Could we use ${PYTHONPATH} to replece `sys.path.append(str(pathlib.Path("/data1/keras_yolo3").resolve()))` described above?
+#### Q: Could we use ${PYTHONPATH} to replece `sys.path.append(str(pathlib.Path("/data1/keras_yolo3").resolve()))` described above?
+A: Yes, possitive. 
 
 #### Q: Why we set const `IMPUT_NAMES` to `'input_1_o0'` ? How the given `'input_1_o0'` to be determined? 
 A: It's available to use the `Netron` app as the graph tool for the given ONNX model to check the model `INPUTS` name: 
@@ -721,9 +723,9 @@ A: It's available to use the `Netron` app as the graph tool for the given ONNX m
 
 
 #### Q: About `input_image = Image.open('000000350003.jpg')`, could we use a png file instead? 
-A: Possitive. 
+A: Yes, possitive. 
 
-Q: About `Workflow for Yolo Example` described above, is there any step that we could skip? If the answer is `possitive`, which step?
+#### Q: About `Workflow for Yolo Example` described above, is there any step that we could skip? If the answer is `possitive`, which step?
 
 #### Q: The official documentation didn't invoke `ktc.convert_channel_last_to_first()` in `preprocess()`, Why we invoke `ktc.convert_channel_last_to_first()` before `preprocess()` returns? 
 
