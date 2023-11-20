@@ -697,7 +697,7 @@ kl520_demo_cam_generic_image_inference_drop_frame
 
 # Quiz
 
-Q: Why choose `v0.23.0` instead of `latest`? 
+#### Q: Why choose `v0.23.0` instead of `latest`? 
 
 #### Q: While coding python, can we use <TAB> to replace the leading space? 
 A: Negative. 
