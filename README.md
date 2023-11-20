@@ -653,7 +653,8 @@ Compile done. Save Nef file to '/data1/kneron_flow/models_520.nef'
 input_image = Image.open('000000350003.jpg')
 in_data = preprocess(input_image)
 input_image.close()
-out_data = ktc.kneron_inference([in_data], nef_file=nef_model_path, platform=int(DEVICE), input_names=[IMPUT_NAMES])
+out_data = ktc.kneron_inference([in_data], nef_file=nef_model_path, \
+    platform=int(DEVICE), input_names=[IMPUT_NAMES])
 det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
 ```
