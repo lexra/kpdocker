@@ -19,7 +19,7 @@ curl https://registry.hub.docker.com/v2/repositories/kneron/toolchain/tags | yq 
 # docker_mount
 ###########################################################
 DOCKER_MOUNT=/mnt/kpdocker
-[ ! -d ${DOCKER_MOUNT} ] && (sudo mkdir -p ${DOCKER_MOUNT} && sudo chmod 777 ${DOCKER_MOUNT})
+[ ! -d ${DOCKER_MOUNT} ] && (sudo mkdir -p ${DOCKER_MOUNT} && sudo chmod 7777 ${DOCKER_MOUNT})
 
 #docker rmi -f $(docker images -aq) || true
 
