@@ -707,7 +707,7 @@ A: Negative.
 A: Take the following step: 
 
 ```bash
-/workspace/miniconda/bin/python /data1/keras_yolo3/convert.py `yolov3-tiny.cfg` `yolov3-tiny.weights` yolov3-tiny.h5
+python /data1/keras_yolo3/convert.py `yolov3-tiny.cfg` `yolov3-tiny.weights` yolov3-tiny.h5
 ```
 
 Q: While invoking a python function with a list of parameters, could we change the order of the given list? 
