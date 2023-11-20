@@ -139,13 +139,6 @@ RUN cd examples/wheelchair && /workspace/miniconda/bin/python /data1/keras_yolo3
 #### 2.2.2 Login to Our Own Docker and Compilation
 
 ```bash
-...
- => exporting layers
- => writing image sha256:35e3c0feaa4c776b7f780fc62c17dbb8395d3697080ee10d9c0a35ff8e4ff269
- => naming to docker.io/kneron/toolchain:vim
-(base) root@3afddac34919:/workspace#
-```
-```bash
 cd examples/wheelchair
 python compile.py 520
 ```
@@ -164,14 +157,6 @@ RUN wget https://www.kneron.com/forum/uploads/112/SMZ3HLBK3DXJ.7z -O SMZ3HLBK3DX
 ```
 
 #### 2.3.2 Login to Our Own Docker and Compilation
-
-```bash
-...
- => exporting layers
- => writing image sha256:35e3c0feaa4c776b7f780fc62c17dbb8395d3697080ee10d9c0a35ff8e4ff269
- => naming to docker.io/kneron/toolchain:vim
-(base) root@3afddac34919:/workspace#
-```
 
 ```bash
 cd examples/freihand2d
