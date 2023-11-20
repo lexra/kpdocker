@@ -47,6 +47,7 @@ Here we choose `v0.23.0` instead of `latest` .
 ```bash
 docker pull kneron/toolchain:v0.23.0
 mkdir -p /mnt/docker
+docker build -t="kneron/toolchain:vim" .
 docker run --rm -it -v /mnt/docker:/docker_mount kneron/toolchain:v0.23.0
 ```
 
