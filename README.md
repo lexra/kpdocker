@@ -1,7 +1,7 @@
 # Kpdocker Introduction
 
 KDP toolchain is a set of software which provide inputs and simulate the operation in the hardware KDP 520, 720, 530, 630 and 730. 
-For better environment compatibility, and the `Kpdocker` is provided for which we include all the dependencies as well as the toolchain software.
+For better environment compatibility, the `Kpdocker` is provided for which we include all the dependencies as well as the toolchain software.
 
 ## 1. Toolchain Docker Deployment
 
