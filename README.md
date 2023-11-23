@@ -70,7 +70,7 @@ RUN cd /data1 && git clone https://github.com/qqwweee/keras-yolo3.git keras_yolo
 ### 1.3.2 Docker build and Login to Our Own Docker
 
 ```
-export DOCKER_MOUNT=/mnt/kpdocker
+export DOCKER_MOUNT=/mnt/docker
 docker build -t="kneron/toolchain:vim" .
 mkdir -p ${DOCKER_MOUNT}
 docker run --rm -it -v ${DOCKER_MOUNT}:/docker_mount kneron/toolchain:vim
@@ -100,7 +100,7 @@ RUN cd examples/darknet && /workspace/miniconda/bin/python /data1/keras_yolo3/co
 #### 2.1.2 Login to Our Own Docker and Compilation
 
 ```bash
-docker run --rm -it -v /mnt/kpdocker:/docker_mount kneron/toolchain:vim
+docker run --rm -it -v /mnt/docker:/docker_mount kneron/toolchain:vim
 ```
 
 ```bash
@@ -677,7 +677,7 @@ First, we have to plug the `KL520` dongle into the `Notebook` USB port.
     cp -fv /data1/kneron_flow/models_520.nef /docker_mount
 ```
 
-After exit our own `Docker`, the copied Model, `models_520.nef`, can be found in `/mnt/kpdocker` . 
+After exit our own `Docker`, the copied Model, `models_520.nef`, can be found in `/mnt/docker` . 
 
 ### 4.2 Update The Model
 
