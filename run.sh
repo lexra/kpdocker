@@ -28,6 +28,8 @@ docker rmi -f $(docker images -a | grep "^${REPOSITORY}" | awk '{print $3}') || 
 # docker run
 ###########################################################
 docker build -t="${REPOSITORY}:vim" .
-docker run --rm -it -v ${DOCKER_MOUNT}:/docker_mount --name kpdocker ${REPOSITORY}:vim
+docker run --rm -it -v ${DOCKER_MOUNT}:/docker_mount --name kpdocker \
+	--gpus all --runtime=nvidia \
+	${REPOSITORY}:vim
 
 exit 0
