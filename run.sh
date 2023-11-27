@@ -21,12 +21,13 @@ curl https://registry.hub.docker.com/v2/repositories/kneron/toolchain/tags | yq 
 DOCKER_MOUNT=/mnt/docker
 [ ! -d ${DOCKER_MOUNT} ] && (sudo mkdir -p ${DOCKER_MOUNT} && sudo chmod 7777 ${DOCKER_MOUNT})
 
-#docker rmi -f $(docker images -aq) || true
+REPOSITORY=kneron/toolchain
+docker rmi -f $(docker images -a | grep "^${REPOSITORY}" | awk '{print $3}') || true
 
 ###########################################################
 # docker run
 ###########################################################
-docker build -t="kneron/toolchain:vim" .
-docker run --rm -it -v ${DOCKER_MOUNT}:/docker_mount --name kpdocker kneron/toolchain:vim
+docker build -t="${REPOSITORY}:vim" .
+docker run --rm -it -v ${DOCKER_MOUNT}:/docker_mount --name kpdocker ${REPOSITORY}:vim
 
 exit 0
