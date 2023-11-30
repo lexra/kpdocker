@@ -393,7 +393,7 @@ Refer to the official document, <a href=https://doc.kneron.com/docs/#toolchain/a
 #### 3.7.1 Postprocess
 
 ```python
-def postprocess(inf_results, ori_image_shape):
+def postprocess(inf_results, ori_image_shape): -> boxes, scores, classes
     tensor_data = [tf.convert_to_tensor(data, dtype=tf.float32) for data in inf_results]
     anchors_path = 'yolov3-tiny.anchors'
     with open(anchors_path) as f:
