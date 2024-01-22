@@ -8,7 +8,7 @@ FROM kneron/toolchain:v0.23.0
 RUN apt update
 RUN apt install -y vim p7zip-full p7zip-rar iputils-ping net-tools udhcpc cython rar libsqlite3-dev curl
 RUN apt install -y dirmngr --install-recommends
-RUN /workspace/miniconda/bin/pip install gdown
+RUN /workspace/miniconda/bin/pip install gdown==4.7.3
 
 ###########################################################
 # cudnn
