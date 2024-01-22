@@ -156,4 +156,9 @@ det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
 
 print('')
+
+# /workspace/libs/compiler/kneron_nef_utils --extract /data1/kneron_flow/models_520.nef --keep_all
+# /workspace/libs/compiler/kneron_nef_utils --info /data1/kneron_flow/models_520.nef
+# /workspace/libs/compiler/kneron_nef_utils --combine_nef /data1/kneron_flow/models_520.nef
+
 exit(0)
