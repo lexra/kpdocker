@@ -86,12 +86,12 @@ RUN wget https://www.kneron.com/forum/uploads/112/SMZ3HLBK3DXJ.7z -O SMZ3HLBK3DX
 ###########################################################
 # freihand2d
 ###########################################################
-RUN mkdir -p examples/crnn
-COPY examples/crnn/compile.py examples/crnn
-COPY examples/crnn/new_crnn.onnx examples/crnn
-COPY examples/crnn/new_crnn_cnn.onnx examples/crnn
-COPY examples/crnn/new_crnn_rnn.onnx examples/crnn
-COPY examples/crnn/crnn_vgg.onnx examples/crnn
-COPY examples/crnn/crnn_resnet.onnx examples/crnn
-COPY examples/crnn/demo_image.zip examples/crnn
-RUN cd examples/crnn && unzip demo_image.zip
+#RUN mkdir -p examples/crnn
+#COPY examples/crnn/compile.py examples/crnn
+#COPY examples/crnn/new_crnn.onnx examples/crnn
+#COPY examples/crnn/new_crnn_cnn.onnx examples/crnn
+#COPY examples/crnn/new_crnn_rnn.onnx examples/crnn
+#COPY examples/crnn/crnn_vgg.onnx examples/crnn
+#COPY examples/crnn/crnn_resnet.onnx examples/crnn
+#COPY examples/crnn/demo_image.zip examples/crnn
+#RUN cd examples/crnn && unzip demo_image.zip
