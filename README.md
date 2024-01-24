@@ -390,7 +390,7 @@ gen fx model report: model_fx_report.html
 
 Refer to the official document, <a href='https://doc.kneron.com/docs/#toolchain/appendix/operators'>Hardware Supported Operators</a> . 
 
-It's important to check in advance if a given model (downloaded from internet) 's hidden layers' Operations meet the <a href='https://doc.kneron.com/docs/#toolchain/appendix/operators'>Hardware Supported Operators</a> . 
+It's important to check in advance if a given model (downloaded from internet) 's hidden layers' meet the required <a href='https://doc.kneron.com/docs/#toolchain/appendix/operators'>Hardware Supported Operators</a> . 
 
 ### 3.7 Floating-Point Model Inference (Onnx Model Check)
 
