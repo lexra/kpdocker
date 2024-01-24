@@ -707,16 +707,16 @@ kl520_demo_cam_generic_image_inference_drop_frame
     ret = kp_load_model_from_file(_device, _model_file_path, &_model_desc);
     ret = kp_inference_configure(_device, &infConf);
 ...
-    _input_data.model_id = _model_desc.models[0].id;    // first model ID
-    _input_data.inference_number = 0;                   // inference number, used to verify with output result
-    _input_data.num_input_node_image = 1;               // number of image
-    _input_data.input_node_image_list[0].resize_mode = KP_RESIZE_ENABLE;        // enable resize in pre-process
-    _input_data.input_node_image_list[0].padding_mode = KP_PADDING_CORNER;      // enable corner padding in pre-process
-    _input_data.input_node_image_list[0].normalize_mode = KP_NORMALIZE_KNERON;  // this depends on models
-    _input_data.input_node_image_list[0].image_format = KP_IMAGE_FORMAT_RGB565; // image format
-    _input_data.input_node_image_list[0].width = _image_width;                  // image width
-    _input_data.input_node_image_list[0].height = _image_height;                // image height
-    _input_data.input_node_image_list[0].crop_count = 0;                        // number of crop area, 0 means no cropping
+    _input_data.model_id = _model_desc.models[0].id;
+    _input_data.inference_number = 0;
+    _input_data.num_input_node_image = 1;
+    _input_data.input_node_image_list[0].resize_mode = KP_RESIZE_ENABLE;
+    _input_data.input_node_image_list[0].padding_mode = KP_PADDING_CORNER;
+    _input_data.input_node_image_list[0].normalize_mode = KP_NORMALIZE_KNERON;
+    _input_data.input_node_image_list[0].image_format = KP_IMAGE_FORMAT_RGB565;
+    _input_data.input_node_image_list[0].width = _image_width;
+    _input_data.input_node_image_list[0].height = _image_height;
+    _input_data.input_node_image_list[0].crop_count = 0;
 ...
     for (;;;) {
         ret = kp_generic_image_inference_send(_device, &_input_data);
