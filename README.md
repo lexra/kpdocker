@@ -787,6 +787,7 @@ A: It's available to use the `Netron` app as the graph tool for the given ONNX m
 A: Yes, possitive. 
 
 #### Q: About `Workflow for Yolo Example` described above, is there any step that we could skip? If the answer is `possitive`, which step?
+A: -
 
 #### Q: The official documentation didn't invoke `ktc.convert_channel_last_to_first()` in `preprocess()`, Why we invoke `ktc.convert_channel_last_to_first()` before `preprocess()` returns? 
 
