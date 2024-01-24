@@ -702,11 +702,9 @@ kl520_demo_cam_generic_image_inference_drop_frame
     int ret;
     kp_generic_image_inference_desc_t _input_data;
 ...
-
     _device = kp_connect_devices(1, &port_id, NULL);
     ret = kp_load_model_from_file(_device, _model_file_path, &_model_desc);
     ret = kp_inference_configure(_device, &infConf);
-
 ...
     _input_data.model_id = _model_desc.models[0].id;    // first model ID
     _input_data.inference_number = 0;                   // inference number, used to verify with output result
@@ -718,10 +716,13 @@ kl520_demo_cam_generic_image_inference_drop_frame
     _input_data.input_node_image_list[0].width = _image_width;                  // image width
     _input_data.input_node_image_list[0].height = _image_height;                // image height
     _input_data.input_node_image_list[0].crop_count = 0;                        // number of crop area, 0 means no cropping
-
-    ret = kp_generic_image_inference_send(_device, &_input_data);
 ...
-    ret = kp_generic_image_inference_receive(_device, &_output_desc, raw_output_buf, raw_buf_size);
+    for (;;;) {
+        ret = kp_generic_image_inference_send(_device, &_input_data);
+...
+        ret = kp_generic_image_inference_receive(_device, &_output_desc, raw_output_buf, raw_buf_size);
+...
+    }
 ...
 ```
 
