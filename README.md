@@ -415,7 +415,8 @@ def postprocess(inf_results, ori_image_shape): -> boxes, scores, classes
 input_image = Image.open('000000350003.jpg')
 in_data = preprocess(input_image)
 input_image.close()
-out_data = ktc.kneron_inference([in_data], onnx_file='yolov3-tiny.opt.onnx', input_names=['input_1_o0'])
+out_data = ktc.kneron_inference([in_data], \
+    onnx_file='yolov3-tiny.opt.onnx', input_names=['input_1_o0'])
 det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
 ```
