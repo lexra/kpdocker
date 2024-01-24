@@ -721,7 +721,8 @@ kl520_demo_cam_generic_image_inference_drop_frame
     for (;;;) {
         ret = kp_generic_image_inference_send(_device, &_input_data);
 ...
-        ret = kp_generic_image_inference_receive(_device, &_output_desc, raw_output_buf, raw_buf_size);
+        ret = kp_generic_image_inference_receive(_device, \
+                    &_output_desc, raw_output_buf, raw_buf_size);
 ...
     }
 ...
