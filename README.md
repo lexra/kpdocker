@@ -681,19 +681,50 @@ After exit our own `Docker`, the copied Model, `models_520.nef`, can be found in
 
 ### 4.2 Update The Model
 
-```
+```bash
 cd C:\msys64\home\kneron_plus\res\models\KL520\tiny_yolo_v3
 ```
 
 ### 4.3 Run the given Example Routine
 
-```
+```bash
 cd C:\msys64\home\kneron_plus\build\bin
 ```
 
-```
+```bash
 kl520_demo_cam_generic_image_inference_drop_frame
 ```
+
+### 4.4 kp_generic_image_inference_send() / kp_generic_image_inference_receive()
+
+```C++
+...
+    int ret;
+    kp_generic_image_inference_desc_t _input_data;
+...
+
+    _device = kp_connect_devices(1, &port_id, NULL);
+    ret = kp_load_model_from_file(_device, _model_file_path, &_model_desc);
+    ret = kp_inference_configure(_device, &infConf);
+
+...
+    _input_data.model_id = _model_desc.models[0].id;    // first model ID
+    _input_data.inference_number = 0;                   // inference number, used to verify with output result
+    _input_data.num_input_node_image = 1;               // number of image
+    _input_data.input_node_image_list[0].resize_mode = KP_RESIZE_ENABLE;        // enable resize in pre-process
+    _input_data.input_node_image_list[0].padding_mode = KP_PADDING_CORNER;      // enable corner padding in pre-process
+    _input_data.input_node_image_list[0].normalize_mode = KP_NORMALIZE_KNERON;  // this depends on models
+    _input_data.input_node_image_list[0].image_format = KP_IMAGE_FORMAT_RGB565; // image format
+    _input_data.input_node_image_list[0].width = _image_width;                  // image width
+    _input_data.input_node_image_list[0].height = _image_height;                // image height
+    _input_data.input_node_image_list[0].crop_count = 0;                        // number of crop area, 0 means no cropping
+
+    ret = kp_generic_image_inference_send(_device, &_input_data);
+...
+    ret = kp_generic_image_inference_receive(_device, &_output_desc, raw_output_buf, raw_buf_size);
+...
+```
+
 
 ## Quiz
 
