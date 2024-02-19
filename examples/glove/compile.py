@@ -26,12 +26,12 @@ def darknetKeyValue(cfg, key):
     return None
 
 ###########################################################
-CWD = '/workspace/examples/wheelchair/'
-NAME = 'wheelchair'
+CWD = '/workspace/examples/glove/'
+NAME = 'glove'
 IN_MODEL_PREPROCESS = True
 TEST_LIST = 'test.txt'
 IMPUT_NAMES = 'input_1_o0'
-TEST_PICTURE = 'push_wheelchair.jpg'
+TEST_PICTURE = 'gloves.jpg'
 
 DEVICE = '520'
 if len(sys.argv) > 1:
