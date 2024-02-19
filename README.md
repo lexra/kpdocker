@@ -125,12 +125,14 @@ RUN mkdir -p examples/wheelchair
 COPY examples/wheelchair/push_wheelchair.jpg examples/wheelchair
 COPY examples/wheelchair/compile.py examples/wheelchair
 COPY examples/wheelchair/test.txt examples/wheelchair
-RUN cd examples/wheelchair && /workspace/miniconda/bin/gdown --id 1uSpN-bDlX9wG66K36yuscewB58pFnpbz \
+RUN cd examples/wheelchair && /workspace/miniconda/bin/gdown \
+    --id 1uSpN-bDlX9wG66K36yuscewB58pFnpbz \
     && unzip -o datasets.zip && rm -rfv datasets.zip && cd -
-RUN cd examples/wheelchair && /workspace/miniconda/bin/gdown --id 1K2fzXOUwuBjdBll3pHaldvqV41Rujsa_ \
-    && cd -
+RUN cd examples/wheelchair && /workspace/miniconda/bin/gdown \
+    --id 1K2fzXOUwuBjdBll3pHaldvqV41Rujsa_ && cd -
 COPY examples/wheelchair/wheelchair.cfg examples/wheelchair
-RUN cd examples/wheelchair && cat wheelchair.cfg | grep anchors | tail -1 | awk -F '=' '{print $2}' \
+RUN cd examples/wheelchair && cat wheelchair.cfg \
+    | grep anchors | tail -1 | awk -F '=' '{print $2}' \
     > wheelchair.anchors && cd -
 RUN cd examples/wheelchair && /workspace/miniconda/bin/python /data1/keras_yolo3/convert.py \
     ./wheelchair.cfg ./wheelchair.weights ./wheelchair.h5 && cd -
@@ -386,7 +388,9 @@ gen fx model report: model_fx_report.html
 
 #### 3.6.4 Hardware Supported Operators
 
-Refer to the official document, <a href=https://doc.kneron.com/docs/#toolchain/appendix/operators>Operator</a> .
+Refer to the official document, <a href='https://doc.kneron.com/docs/#toolchain/appendix/operators'>Hardware Supported Operators</a> . 
+
+It's important to check in advance if a given model (downloaded from internet) 's hidden layers' meet the required <a href='https://doc.kneron.com/docs/#toolchain/appendix/operators'>Hardware Supported Operators</a> . 
 
 ### 3.7 Floating-Point Model Inference (Onnx Model Check)
 
@@ -415,7 +419,8 @@ def postprocess(inf_results, ori_image_shape): -> boxes, scores, classes
 input_image = Image.open('000000350003.jpg')
 in_data = preprocess(input_image)
 input_image.close()
-out_data = ktc.kneron_inference([in_data], onnx_file='yolov3-tiny.opt.onnx', input_names=['input_1_o0'])
+out_data = ktc.kneron_inference([in_data], \
+    onnx_file='yolov3-tiny.opt.onnx', input_names=['input_1_o0'])
 det_res = postprocess(out_data, [input_image.size[1], input_image.size[0]])
 print(det_res)
 ```
@@ -681,21 +686,54 @@ After exit our own `Docker`, the copied Model, `models_520.nef`, can be found in
 
 ### 4.2 Update The Model
 
-```
+```bash
 cd C:\msys64\home\kneron_plus\res\models\KL520\tiny_yolo_v3
 ```
 
 ### 4.3 Run the given Example Routine
 
-```
+```bash
 cd C:\msys64\home\kneron_plus\build\bin
 ```
 
-```
+```bash
 kl520_demo_cam_generic_image_inference_drop_frame
 ```
 
-## Quiz
+### 4.4 kp_generic_image_inference_send() / kp_generic_image_inference_receive()
+
+```C++
+...
+    int ret;
+    kp_generic_image_inference_desc_t _input_data;
+...
+    _device = kp_connect_devices(1, &port_id, NULL);
+    ret = kp_load_model_from_file(_device, _model_file_path, &_model_desc);
+    ret = kp_inference_configure(_device, &infConf);
+...
+    _input_data.model_id = _model_desc.models[0].id;
+    _input_data.inference_number = 0;
+    _input_data.num_input_node_image = 1;
+    _input_data.input_node_image_list[0].resize_mode = KP_RESIZE_ENABLE;
+    _input_data.input_node_image_list[0].padding_mode = KP_PADDING_CORNER;
+    _input_data.input_node_image_list[0].normalize_mode = KP_NORMALIZE_KNERON;
+    _input_data.input_node_image_list[0].image_format = KP_IMAGE_FORMAT_RGB565;
+    _input_data.input_node_image_list[0].width = _image_width;
+    _input_data.input_node_image_list[0].height = _image_height;
+    _input_data.input_node_image_list[0].crop_count = 0;
+...
+    for (;;;) {
+        ret = kp_generic_image_inference_send(_device, &_input_data);
+...
+        ret = kp_generic_image_inference_receive(_device, \
+                    &_output_desc, raw_output_buf, raw_buf_size);
+...
+    }
+...
+```
+
+
+## Q & A
 
 #### Q: Why choose `v0.23.0` instead of `latest`? 
 A: Since we found the `AssertionError` happened for the given version, `v0.23.1`, which we display below: 
@@ -730,7 +768,7 @@ A: Negative.
 A: Take the following step: 
 
 ```bash
-python /data1/keras_yolo3/convert.py `yolov3-tiny.cfg` `yolov3-tiny.weights` yolov3-tiny.h5
+python /data1/keras_yolo3/convert.py yolov3-tiny.cfg yolov3-tiny.weights yolov3-tiny.h5
 ```
 
 #### Q: While invoking a python function with a list of parameters, could we change the order of the given list? 
@@ -749,6 +787,7 @@ A: It's available to use the `Netron` app as the graph tool for the given ONNX m
 A: Yes, possitive. 
 
 #### Q: About `Workflow for Yolo Example` described above, is there any step that we could skip? If the answer is `possitive`, which step?
+A: -
 
 #### Q: The official documentation didn't invoke `ktc.convert_channel_last_to_first()` in `preprocess()`, Why we invoke `ktc.convert_channel_last_to_first()` before `preprocess()` returns? 
 
