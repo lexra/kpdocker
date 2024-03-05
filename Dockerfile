@@ -8,7 +8,7 @@ FROM kneron/toolchain:v0.23.0
 RUN apt update
 RUN apt install -y vim p7zip-full p7zip-rar iputils-ping net-tools udhcpc cython rar libsqlite3-dev curl
 RUN apt install -y dirmngr --install-recommends
-RUN /workspace/miniconda/bin/pip install gdown==4.7.3
+RUN /workspace/miniconda/bin/pip install gdown==4.7.3 onnx-simplifier
 
 ###########################################################
 # cudnn
@@ -46,6 +46,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt install -y cuda-11-0 libcudnn8 libcudnn8-
 RUN cd /data1 && git clone https://github.com/qqwweee/keras-yolo3.git keras_yolo3 && cd -
 COPY keras/backend/tensorflow_backend.py /workspace/miniconda/lib/python3.7/site-packages/keras/backend
 RUN git clone https://github.com/kneron/ONNX_Convertor.git
+RUN git clone https://github.com/kneron/ConvertorExamples.git
 
 ###########################################################
 # darknet
@@ -61,6 +62,19 @@ RUN cd examples/darknet && /workspace/miniconda/bin/python /data1/keras_yolo3/co
 RUN cd examples/darknet && wget https://github.com/datvuthanh/HybridNets/releases/download/v1.0/hybridnets.pth && cd -
 
 ###########################################################
+# yolov5
+###########################################################
+RUN mkdir -p examples/yolov5s
+COPY examples/yolov5s/pretrained_paths_720.yaml examples/yolov5s
+COPY examples/yolov5s/compile.py examples/yolov5s
+RUN cd examples/yolov5s && /workspace/miniconda/bin/python /workspace/ai_training/detection/yolov5/generate_npy/yolov5_generate_npy.py --input-h 640 --input-w 640
+RUN cd examples/yolov5s && wget https://github.com/kneron/Model_Zoo/raw/main/detection/yolov5/yolov5s/best.pt
+RUN cd /workspace/ai_training/detection/yolov5/yolov5 && /workspace/miniconda/bin/python ../exporting/yolov5_export.py --data /workspace/examples/yolov5s/pretrained_paths_720.yaml
+RUN cd examples/yolov5s && /workspace/miniconda/bin/python -m onnxsim yolov5s.onnx output.onnx
+RUN cd examples/yolov5s && /workspace/miniconda/bin/python /workspace/ONNX_Convertor/optimizer_scripts/pytorch_exported_onnx_preprocess.py output.onnx yolov5s.opt.onnx
+#RUN cd examples/yolov5s && /workspace/miniconda/bin/python /workspace/libs/ONNX_Convertor/optimizer_scripts/onnx2onnx.py yolov5s.onnx -o yolov5s.opt.onnx --add-bn -t
+
+###########################################################
 # wheelchair
 ###########################################################
 RUN mkdir -p examples/wheelchair
@@ -73,13 +87,17 @@ COPY examples/wheelchair/wheelchair.cfg examples/wheelchair
 RUN cd examples/wheelchair && cat wheelchair.cfg | grep anchors | tail -1 | awk -F '=' '{print $2}' > wheelchair.anchors && cd -
 RUN cd examples/wheelchair && /workspace/miniconda/bin/python /data1/keras_yolo3/convert.py ./wheelchair.cfg ./wheelchair.weights ./wheelchair.h5 && cd -
 
+###########################################################
+# gloveHand
+###########################################################
 RUN mkdir -p examples/glove
 COPY examples/glove/gloves.jpg examples/glove
 COPY examples/glove/compile.py examples/glove
 COPY examples/glove/test.txt examples/glove
 RUN cd examples/glove && /workspace/miniconda/bin/gdown --id 1wr4WYg13Td18nOt9ufW-4YpbHHuLWrp4 && unzip -o datasets.zip && rm -rfv datasets.zip && cd -
-RUN cd examples/glove && /workspace/miniconda/bin/gdown --id 1FQgOoqvUvzSGPbxRVL1Bgvl-0AUeHQ8N && cd -
+#RUN cd examples/glove && /workspace/miniconda/bin/gdown --id 1FQgOoqvUvzSGPbxRVL1Bgvl-0AUeHQ8N && cd -
 COPY examples/glove/glove.cfg examples/glove
+COPY examples/glove/glove.weights examples/glove
 RUN cd examples/glove && cat glove.cfg | grep anchors | tail -1 | awk -F '=' '{print $2}' > glove.anchors && cd -
 RUN cd examples/glove && /workspace/miniconda/bin/python /data1/keras_yolo3/convert.py ./glove.cfg ./glove.weights ./glove.h5 && cd -
 
@@ -94,7 +112,7 @@ RUN wget https://www.kneron.com/forum/uploads/112/SMZ3HLBK3DXJ.7z -O SMZ3HLBK3DX
 
 
 ###########################################################
-# freihand2d
+# crnn
 ###########################################################
 #RUN mkdir -p examples/crnn
 #COPY examples/crnn/compile.py examples/crnn
