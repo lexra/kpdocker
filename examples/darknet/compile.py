@@ -96,7 +96,7 @@ print(CWD + NAME + '.opt.onnx')
 onnx.save(m, CWD + NAME + '.opt.onnx')
 
 # setup ktc config
-km = ktc.ModelConfig(32769, "0001", DEVICE, onnx_model=m)
+km = ktc.ModelConfig(205, "0001", DEVICE, onnx_model=m)
 
 # npu(only) performance simulation
 eval_result = km.evaluate()

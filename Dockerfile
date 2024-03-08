@@ -81,25 +81,24 @@ RUN mkdir -p examples/wheelchair
 COPY examples/wheelchair/push_wheelchair.jpg examples/wheelchair
 COPY examples/wheelchair/compile.py examples/wheelchair
 COPY examples/wheelchair/test.txt examples/wheelchair
-RUN cd examples/wheelchair && /workspace/miniconda/bin/gdown --id 1uSpN-bDlX9wG66K36yuscewB58pFnpbz && unzip -o datasets.zip && rm -rfv datasets.zip && cd -
-RUN cd examples/wheelchair && /workspace/miniconda/bin/gdown --id 1K2fzXOUwuBjdBll3pHaldvqV41Rujsa_ && cd -
+COPY examples/wheelchair/datasets.zip examples/wheelchair
+COPY examples/wheelchair/wheelchair.weights examples/wheelchair
 COPY examples/wheelchair/wheelchair.cfg examples/wheelchair
-RUN cd examples/wheelchair && cat wheelchair.cfg | grep anchors | tail -1 | awk -F '=' '{print $2}' > wheelchair.anchors && cd -
-RUN cd examples/wheelchair && /workspace/miniconda/bin/python /data1/keras_yolo3/convert.py ./wheelchair.cfg ./wheelchair.weights ./wheelchair.h5 && cd -
+RUN cd examples/wheelchair && cat wheelchair.cfg | grep anchors | tail -1 | awk -F '=' '{print $2}' > wheelchair.anchors
+RUN cd examples/wheelchair && /workspace/miniconda/bin/python /data1/keras_yolo3/convert.py ./wheelchair.cfg ./wheelchair.weights ./wheelchair.h5 && unzip datasets.zip
 
 ###########################################################
 # gloveHand
 ###########################################################
-RUN mkdir -p examples/glove
-COPY examples/glove/gloves.jpg examples/glove
-COPY examples/glove/compile.py examples/glove
-COPY examples/glove/test.txt examples/glove
-RUN cd examples/glove && /workspace/miniconda/bin/gdown --id 1wr4WYg13Td18nOt9ufW-4YpbHHuLWrp4 && unzip -o datasets.zip && rm -rfv datasets.zip && cd -
-#RUN cd examples/glove && /workspace/miniconda/bin/gdown --id 1FQgOoqvUvzSGPbxRVL1Bgvl-0AUeHQ8N && cd -
-COPY examples/glove/glove.cfg examples/glove
-COPY examples/glove/glove.weights examples/glove
-RUN cd examples/glove && cat glove.cfg | grep anchors | tail -1 | awk -F '=' '{print $2}' > glove.anchors && cd -
-RUN cd examples/glove && /workspace/miniconda/bin/python /data1/keras_yolo3/convert.py ./glove.cfg ./glove.weights ./glove.h5 && cd -
+#RUN mkdir -p examples/glove
+#COPY examples/glove/gloves.jpg examples/glove
+#COPY examples/glove/compile.py examples/glove
+#COPY examples/glove/test.txt examples/glove
+#RUN cd examples/glove && /workspace/miniconda/bin/gdown --id 1wr4WYg13Td18nOt9ufW-4YpbHHuLWrp4 && unzip -o datasets.zip && rm -rfv datasets.zip && cd -
+#COPY examples/glove/glove.cfg examples/glove
+#COPY examples/glove/glove.weights examples/glove
+#RUN cd examples/glove && cat glove.cfg | grep anchors | tail -1 | awk -F '=' '{print $2}' > glove.anchors && cd -
+#RUN cd examples/glove && /workspace/miniconda/bin/python /data1/keras_yolo3/convert.py ./glove.cfg ./glove.weights ./glove.h5 && cd -
 
 ###########################################################
 # freihand2d

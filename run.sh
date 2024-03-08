@@ -29,6 +29,10 @@ sudo docker rmi -f $(sudo docker images -a | grep "^${REPOSITORY}" | awk '{print
 ###########################################################
 # docker run
 ###########################################################
+[ ! -e examples/wheelchair/datasets.zip ] && gdown https://drive.google.com/uc?id=1uSpN-bDlX9wG66K36yuscewB58pFnpbz -O examples/wheelchair/
+[ ! -e examples/wheelchair/wheelchair.weights ] && gdown https://drive.google.com/uc?id=1K2fzXOUwuBjdBll3pHaldvqV41Rujsa_ -O examples/wheelchair/
+rm -rfv examples/wheelchair/*tmp
+
 docker build -t="${REPOSITORY}" .
 docker run --rm -it -v ${DOCKER_MOUNT}:/docker_mount --name kpdocker \
 	--shm-size=4gb \

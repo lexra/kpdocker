@@ -47,7 +47,7 @@ if len(sys.argv) > 1:
     DEVICE = sys.argv[1]
 
 ## Section 3
-km = ktc.ModelConfig(32769, "8b28", DEVICE, onnx_path="/workspace/examples/yolov5s/yolov5s.opt.onnx")
+km = ktc.ModelConfig(211, "8b28", DEVICE, onnx_path="/workspace/examples/yolov5s/yolov5s.opt.onnx")
 eval_result = km.evaluate()
 
 def preprocess(input_file):
