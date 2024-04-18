@@ -33,6 +33,9 @@ pip3 install gdown==5.1.0
 [ ! -e examples/wheelchair/wheelchair.weights ] && gdown https://drive.google.com/uc?id=1K2fzXOUwuBjdBll3pHaldvqV41Rujsa_ -O examples/wheelchair/
 rm -rfv examples/wheelchair/*tmp
 
+[ ! -e examples/darknet/yolov3-tiny.weights ] && curl -fS https://pjreddie.com/media/files/yolov3-tiny.weights -o examples/darknet/yolov3-tiny.weights
+[ ! -e examples/darknet/hybridnets.pth ] && curl -fS https://github.com/datvuthanh/HybridNets/releases/download/v1.0/hybridnets.pth -o examples/darknet/hybridnets.pth
+
 docker build -t="${REPOSITORY}" .
 docker run --rm -it -v ${DOCKER_MOUNT}:/docker_mount --name kpdocker \
 	--shm-size=4gb \

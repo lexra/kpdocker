@@ -58,10 +58,10 @@ COPY examples/darknet/compile.py examples/darknet
 COPY examples/darknet/yolov3-tiny.cfg examples/darknet
 COPY examples/darknet/test_image10.txt examples/darknet
 RUN cd examples/darknet && cat yolov3-tiny.cfg | grep anchors | tail -1 | awk -F '=' '{print $2}' > yolov3-tiny.anchors && cd -
-RUN cd examples/darknet && wget https://pjreddie.com/media/files/yolov3-tiny.weights && cd -
+COPY examples/darknet/yolov3-tiny.weights examples/darknet
 RUN cd examples/darknet && wget http://doc.kneron.com/docs/toolchain/res/test_image10.zip && unzip test_image10.zip && cp /workspace/E2E_Simulator/app/test_image_folder/yolo/000000350003.jpg . && cd -
 RUN cd examples/darknet && /workspace/miniconda/bin/python /data1/keras_yolo3/convert.py yolov3-tiny.cfg yolov3-tiny.weights yolov3-tiny.h5 && cd -
-RUN cd examples/darknet && wget https://github.com/datvuthanh/HybridNets/releases/download/v1.0/hybridnets.pth && cd -
+COPY examples/darknet/hybridnets.pth examples/darknet
 
 ###########################################################
 # yolov5
