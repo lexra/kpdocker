@@ -46,7 +46,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt install -y cuda-11-0 libcudnn8 libcudnn8-
 # keras/backend/tensorflow_backend.py
 ###########################################################
 RUN cd /data1 && git clone https://github.com/qqwweee/keras-yolo3.git keras_yolo3 && cd -
-COPY keras/backend/tensorflow_backend.py /workspace/miniconda/lib/python3.7/site-packages/keras/backend
+#COPY keras/backend/tensorflow_backend.py /workspace/miniconda/lib/python3.7/site-packages/keras/backend
 RUN git clone https://github.com/kneron/ONNX_Convertor.git
 RUN git clone https://github.com/kneron/ConvertorExamples.git
 
