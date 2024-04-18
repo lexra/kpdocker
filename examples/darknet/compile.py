@@ -128,7 +128,7 @@ for item in lines:
     image.close()
 
 # fix point analysis
-bie_model_path = km.analysis({IMPUT_NAMES: img_list}, output_dir='/data1/kneron_flow', threads=4, quantize_mode='default', datapath_range_method='percentage',, mode=1)
+bie_model_path = km.analysis({IMPUT_NAMES: img_list}, output_dir='/data1/kneron_flow', threads=4, quantize_mode='default', datapath_range_method='percentage', mode=1)
 print("\nFix point analysis done. Save bie model to '" + str(bie_model_path) + "'")
 
 #if DEVICE != '520':
