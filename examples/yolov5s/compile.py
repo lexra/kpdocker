@@ -42,7 +42,7 @@ import sys
 ## ONNX Optimization
 # optimized_m = ktc.onnx_optimizer.onnx2onnx_flow(result_m, eliminate_tail=True)
 
-DEVICE = '720'
+DEVICE = '630'
 if len(sys.argv) > 1:
     DEVICE = sys.argv[1]
 

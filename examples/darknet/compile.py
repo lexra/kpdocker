@@ -33,7 +33,7 @@ TEST_LIST = 'test_image10.txt'
 IMPUT_NAMES = 'input_1_o0'
 TEST_PICTURE = '000000350003.jpg'
 
-DEVICE = '520'
+DEVICE = '630'
 if len(sys.argv) > 1:
     DEVICE = sys.argv[1]
 
@@ -128,9 +128,10 @@ for item in lines:
     image.close()
 
 # fix point analysis
-bie_model_path = km.analysis({IMPUT_NAMES: img_list}, output_dir='/data1/kneron_flow', threads=4, quantize_mode='default', datapath_range_method='percentage', fm_cut='deep_search', mode=1)
+bie_model_path = km.analysis({IMPUT_NAMES: img_list}, output_dir='/data1/kneron_flow', threads=4, quantize_mode='default', datapath_range_method='percentage',, mode=1)
 print("\nFix point analysis done. Save bie model to '" + str(bie_model_path) + "'")
 
+#if DEVICE != '520':
 # bie model check
 input_image = Image.open(CWD + TEST_PICTURE)
 in_data = preprocess(input_image)
