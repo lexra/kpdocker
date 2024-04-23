@@ -26,7 +26,9 @@ RUN apt update
 RUN echo 'tzdata tzdata/Areas select Asia' | debconf-set-selections && echo 'tzdata tzdata/Zones/Asia select Taipei' | debconf-set-selections
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install tzdata locales
 #RUN ln -snf /usr/share/zoneinfo/$(curl https://ipapi.co/timezone) /etc/localtime
+
 RUN DEBIAN_FRONTEND=noninteractive apt install -y cuda-11-0 libcudnn8 libcudnn8-dev libnccl2
+RUN apt install -y libopencv-dev
 
 ###########################################################
 # 
@@ -125,3 +127,14 @@ RUN 7z x -y examples/freihand2d/SMZ3HLBK3DXJ.7z -oexamples/freihand2d && rm -rfv
 #COPY examples/crnn/crnn_resnet.onnx examples/crnn
 #COPY examples/crnn/demo_image.zip examples/crnn
 #RUN cd examples/crnn && unzip demo_image.zip
+
+
+###########################################################
+# Yolo-Fastest
+###########################################################
+RUN git clone https://github.com/HimaxWiseEyePlus/Yolo-Fastest.git
+RUN cd Yolo-Fastest && git clone https://github.com/HimaxWiseEyePlus/keras-YOLOv3-model-set.git
+RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/targets/x86_64-linux/lib && export PATH=/usr/local/cuda/bin:$PATH && make -C Yolo-Fastest
+COPY Yolo-Fastest/wheelchair.tgz Yolo-Fastest
+RUN tar zxvf Yolo-Fastest/wheelchair.tgz -C Yolo-Fastest && rm -rfv Yolo-Fastest/wheelchair.tgz
+
