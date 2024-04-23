@@ -49,6 +49,7 @@ RUN cd /data1 && git clone https://github.com/qqwweee/keras-yolo3.git keras_yolo
 #COPY keras/backend/tensorflow_backend.py /workspace/miniconda/lib/python3.7/site-packages/keras/backend
 RUN git clone https://github.com/kneron/ONNX_Convertor.git
 RUN git clone https://github.com/kneron/ConvertorExamples.git
+RUN cd ConvertorExamples && git lfs pull
 
 ###########################################################
 # darknet
@@ -105,11 +106,11 @@ RUN cd examples/wheelchair && /workspace/miniconda/bin/python /data1/keras_yolo3
 ###########################################################
 # freihand2d
 ###########################################################
-RUN rm -rfv /data1/voc_data50
 RUN mkdir -p examples/freihand2d
 COPY examples/freihand2d/latest_kneron_optimized.onnx examples/freihand2d
 COPY examples/freihand2d/compile.py examples/freihand2d
-RUN wget https://www.kneron.com/forum/uploads/112/SMZ3HLBK3DXJ.7z -O SMZ3HLBK3DXJ.7z && 7z x SMZ3HLBK3DXJ.7z -o/workspace/examples/freihand2d && rm -rfv SMZ3HLBK3DXJ.7z
+COPY examples/freihand2d/SMZ3HLBK3DXJ.7z examples/freihand2d
+RUN 7z x -y examples/freihand2d/SMZ3HLBK3DXJ.7z -oexamples/freihand2d && rm -rfv examples/freihand2d/SMZ3HLBK3DXJ.7z
 
 
 ###########################################################
