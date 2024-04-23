@@ -21,9 +21,8 @@ DOCKER_MOUNT=/work/docker_mount
 [ ! -d ${DOCKER_MOUNT} ] && (sudo mkdir -p ${DOCKER_MOUNT} && sudo chmod 7777 ${DOCKER_MOUNT})
 
 TAG=kpdocker
-#REPOSITORY=kneron/toolchain
 REPOSITORY=lexra/${TAG}
-sudo docker rmi -f $(sudo docker images -a | grep "^${REPOSITORY}" | awk '{print $3}') || true
+sudo docker images -a && sudo docker rmi -f lexra/${TAG} || true
 
 ###########################################################
 # docker run

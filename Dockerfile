@@ -54,6 +54,25 @@ RUN git clone https://github.com/kneron/ConvertorExamples.git
 RUN cd ConvertorExamples && git lfs pull
 
 ###########################################################
+# wheelchair
+###########################################################
+RUN git clone https://github.com/HimaxWiseEyePlus/Yolo-Fastest.git && sed 's|^CUDNN_HALF=0|CUDNN_HALF=1|g' -i Yolo-Fastest/Makefile
+RUN cd Yolo-Fastest && git clone https://github.com/HimaxWiseEyePlus/keras-YOLOv3-model-set.git
+RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/targets/x86_64-linux/lib && export PATH=/usr/local/cuda/bin:$PATH && make -C Yolo-Fastest
+COPY Yolo-Fastest/wheelchair.tgz Yolo-Fastest
+RUN tar zxvf Yolo-Fastest/wheelchair.tgz -C Yolo-Fastest && rm -rfv Yolo-Fastest/wheelchair.tgz
+
+RUN mkdir -p examples/wheelchair
+COPY examples/wheelchair/push_wheelchair.jpg examples/wheelchair
+COPY examples/wheelchair/compile.py examples/wheelchair
+COPY examples/wheelchair/test.txt examples/wheelchair
+COPY examples/wheelchair/datasets.zip examples/wheelchair
+COPY examples/wheelchair/wheelchair.weights examples/wheelchair
+COPY examples/wheelchair/wheelchair.cfg examples/wheelchair
+RUN cd examples/wheelchair && cat wheelchair.cfg | grep anchors | tail -1 | awk -F '=' '{print $2}' > wheelchair.anchors
+RUN cd examples/wheelchair && /workspace/miniconda/bin/python /data1/keras_yolo3/convert.py ./wheelchair.cfg ./wheelchair.weights ./wheelchair.h5 && unzip datasets.zip
+
+###########################################################
 # darknet
 ###########################################################
 RUN mkdir -p examples/darknet
@@ -78,19 +97,6 @@ RUN cd /workspace/ai_training/detection/yolov5/yolov5 && /workspace/miniconda/bi
 RUN cd examples/yolov5s && /workspace/miniconda/bin/python -m onnxsim yolov5s.onnx output.onnx
 RUN cd examples/yolov5s && /workspace/miniconda/bin/python /workspace/ONNX_Convertor/optimizer_scripts/pytorch_exported_onnx_preprocess.py output.onnx yolov5s.opt.onnx
 #RUN cd examples/yolov5s && /workspace/miniconda/bin/python /workspace/libs/ONNX_Convertor/optimizer_scripts/onnx2onnx.py yolov5s.onnx -o yolov5s.opt.onnx --add-bn -t
-
-###########################################################
-# wheelchair
-###########################################################
-RUN mkdir -p examples/wheelchair
-COPY examples/wheelchair/push_wheelchair.jpg examples/wheelchair
-COPY examples/wheelchair/compile.py examples/wheelchair
-COPY examples/wheelchair/test.txt examples/wheelchair
-COPY examples/wheelchair/datasets.zip examples/wheelchair
-COPY examples/wheelchair/wheelchair.weights examples/wheelchair
-COPY examples/wheelchair/wheelchair.cfg examples/wheelchair
-RUN cd examples/wheelchair && cat wheelchair.cfg | grep anchors | tail -1 | awk -F '=' '{print $2}' > wheelchair.anchors
-RUN cd examples/wheelchair && /workspace/miniconda/bin/python /data1/keras_yolo3/convert.py ./wheelchair.cfg ./wheelchair.weights ./wheelchair.h5 && unzip datasets.zip
 
 ###########################################################
 # gloveHand
@@ -127,14 +133,4 @@ RUN 7z x -y examples/freihand2d/SMZ3HLBK3DXJ.7z -oexamples/freihand2d && rm -rfv
 #COPY examples/crnn/crnn_resnet.onnx examples/crnn
 #COPY examples/crnn/demo_image.zip examples/crnn
 #RUN cd examples/crnn && unzip demo_image.zip
-
-
-###########################################################
-# Yolo-Fastest
-###########################################################
-RUN git clone https://github.com/HimaxWiseEyePlus/Yolo-Fastest.git
-RUN cd Yolo-Fastest && git clone https://github.com/HimaxWiseEyePlus/keras-YOLOv3-model-set.git
-RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/targets/x86_64-linux/lib && export PATH=/usr/local/cuda/bin:$PATH && make -C Yolo-Fastest
-COPY Yolo-Fastest/wheelchair.tgz Yolo-Fastest
-RUN tar zxvf Yolo-Fastest/wheelchair.tgz -C Yolo-Fastest && rm -rfv Yolo-Fastest/wheelchair.tgz
 
