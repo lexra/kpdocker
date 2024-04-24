@@ -36,6 +36,7 @@ rm -rfv examples/wheelchair/*tmp
 [ ! -e examples/darknet/hybridnets.pth ] && curl -fS https://github.com/datvuthanh/HybridNets/releases/download/v1.0/hybridnets.pth -o examples/darknet/hybridnets.pth
 [ ! -e examples/freihand2d/SMZ3HLBK3DXJ.7z ] && curl -fS https://www.kneron.com/forum/uploads/112/SMZ3HLBK3DXJ.7z -o examples/freihand2d/SMZ3HLBK3DXJ.7z
 
+mkdir -p Yolo-Fastest
 [ ! -e Yolo-Fastest/wheelchair.tgz ] && gdown https://drive.google.com/uc?id=1VTxIK0uQgqbkcdI8GTnaYyGZUnlP0ZvT -O Yolo-Fastest/
 
 docker build -t="${REPOSITORY}" .
